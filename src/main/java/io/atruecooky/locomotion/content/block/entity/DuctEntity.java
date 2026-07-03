@@ -13,7 +13,11 @@ public class DuctEntity extends BlockEntity {
 	private BlockPos TargetPos;
 	private Direction TargetDirection;
 
+	
+
 	public DuctEntity(BlockPos pos, BlockState state) {
 		super(ModBlockEntitys.DUCT.get(), pos, state);
 	}
+
+	
 }

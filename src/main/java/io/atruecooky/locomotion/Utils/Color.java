@@ -5,6 +5,7 @@ public class Color {
 	public static final int
 		WHITE = of(255,255,255),
 		BLACK = of(0,0,0),
+		TRANSPARENT = of(0,0,0,0),
 		DARK_BLUE = of("#0000AA"),
 		DARK_GREEN = of("#00AA00"),
 		DARK_AQUA = of("#00AAAA"),

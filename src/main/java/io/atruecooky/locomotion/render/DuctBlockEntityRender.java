@@ -1,20 +1,19 @@
 package io.atruecooky.locomotion.render;
 
+import org.joml.Quaternionf;
+
 import com.mojang.blaze3d.vertex.PoseStack;
 
 import io.atruecooky.locomotion.Locomotion;
 import io.atruecooky.locomotion.content.ModBlockEntitys;
 import io.atruecooky.locomotion.content.block.entity.DuctEntity;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.LightTexture;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.block.BlockRenderDispatcher;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LightLayer;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.api.distmarker.Dist;
@@ -31,17 +30,20 @@ public class DuctBlockEntityRender implements BlockEntityRenderer<DuctEntity> {
 
 	@Override
 	public void render(DuctEntity blockEntity, float partialTick, PoseStack poseStack, MultiBufferSource bufferSource, int packedLight, int packedOverlay) {
+		
 		BlockRenderDispatcher blockRenderer = Minecraft.getInstance().getBlockRenderer();
 		poseStack.pushPose();
-		poseStack.translate(0f, 2f, 0f);
+		poseStack.translate(0.5f, 2f, 0.5f);
+		poseStack.scale(0.25f, 0.25f, 0.25f);
+		poseStack.mulPose(new Quaternionf().rotateY((float)Math.toRadians(45d)));
 		blockRenderer.renderSingleBlock(
 			Blocks.DIAMOND_BLOCK.defaultBlockState(),
 			poseStack,
 			bufferSource,
-			2000,
+			16,
 			0,
 			ModelData.EMPTY,
-			RenderType.SOLID
+			RenderType.entityCutoutNoCull(ResourceLocation.fromNamespaceAndPath(Locomotion.MODID, "duct_entity"))
 		);
 		poseStack.popPose();
 	}
@@ -56,15 +58,9 @@ public class DuctBlockEntityRender implements BlockEntityRenderer<DuctEntity> {
 		return true;
 	}
 
-	private int getLightLevel(Level level, BlockPos pos) {
-		int block_light = level.getBrightness(LightLayer.BLOCK, pos);
-		int sky_light = level.getBrightness(LightLayer.SKY, pos);
-		return LightTexture.pack(block_light, sky_light);
-	}
-
 	@OnlyIn(Dist.CLIENT)
 	@SubscribeEvent
 	public static void registerEntityRenderer(EntityRenderersEvent.RegisterRenderers event) {
-		event.registerBlockEntityRenderer(ModBlockEntitys.DUCT.get(),context -> new DuctBlockEntityRender(context));;
+		event.registerBlockEntityRenderer(ModBlockEntitys.DUCT.get(),context -> new DuctBlockEntityRender(context));
 	}
 }
