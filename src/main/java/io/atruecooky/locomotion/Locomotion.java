@@ -5,7 +5,7 @@ import com.mojang.logging.LogUtils;
 
 import io.atruecooky.locomotion.content.ModBlockEntitys;
 import io.atruecooky.locomotion.content.ModBlocks;
-import io.atruecooky.locomotion.content.ModCreativeTab;
+import io.atruecooky.locomotion.content.ModCreativeTabs;
 import io.atruecooky.locomotion.content.ModDataComponents;
 import io.atruecooky.locomotion.content.ModItems;
 import net.neoforged.bus.api.IEventBus;
@@ -26,7 +26,7 @@ public class Locomotion {
 
 		ModItems.register(modEventBus);
 		ModBlocks.register(modEventBus);
-		ModCreativeTab.register(modEventBus);
+		ModCreativeTabs.register(modEventBus);
 		ModDataComponents.register(modEventBus);
 		ModBlockEntitys.register(modEventBus);
 	}

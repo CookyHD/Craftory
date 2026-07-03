@@ -13,6 +13,9 @@ import net.minecraft.world.level.block.state.BlockState;
 
 public class SlagCollectorEntity extends BlockEntity implements HeatHoverInformation {
 
+	private int ProccesTime = 0;
+	private int MaxProccesTime = 100;
+
 	@Override
 	public void addTooltip(List<Component> tooltip) {
 		tooltip.add(Text.of("    Heat Display:").getComponent());

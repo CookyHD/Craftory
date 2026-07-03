@@ -1,6 +1,7 @@
 package io.atruecooky.locomotion.content;
 
 import io.atruecooky.locomotion.Locomotion;
+import io.atruecooky.locomotion.content.block.DuctBlock;
 import io.atruecooky.locomotion.content.block.SlagCollectorBlock;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -19,6 +20,7 @@ public class ModBlocks {
 	public static final DeferredBlock<Block> SLAG_BLOCK = registerBlock("slag_block", () -> new Block(BlockBehaviour.Properties.of()));
 	public static final DeferredBlock<Block> PLASTIC_BLOCK = registerBlock("plastic_block", () -> new Block(BlockBehaviour.Properties.of()));
 	public static final DeferredBlock<SlagCollectorBlock> SLAG_COLLECTOR = registerBlock("slag_collector", () -> new SlagCollectorBlock(BlockBehaviour.Properties.of()));
+	public static final DeferredBlock<DuctBlock> DUCT = registerBlock("duct_block", () -> new DuctBlock(BlockBehaviour.Properties.of()));
 
 	private static <T extends Block> DeferredBlock<T> registerBlock(String name,Supplier<T> sup) {
 		DeferredBlock<T> block = BLOCKS.register(name, sup);

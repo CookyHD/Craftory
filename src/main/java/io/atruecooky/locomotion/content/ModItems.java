@@ -1,6 +1,7 @@
 package io.atruecooky.locomotion.content;
 
 import io.atruecooky.locomotion.Locomotion;
+import io.atruecooky.locomotion.content.items.DuctItem;
 import io.atruecooky.locomotion.content.items.EngineTermostatItem;
 import io.atruecooky.locomotion.content.items.NeedleGunItem;
 import io.atruecooky.locomotion.content.items.WrenchItem;
@@ -25,6 +26,8 @@ public class ModItems {
 
 	public static final DeferredItem<Item> MAGAZINE = ITEMS.register("magazine", () -> new Item(new Item.Properties()));
 	public static final DeferredItem<Item> MOLTEN_MAGAZINE = ITEMS.register("molten_magazine", () -> new Item(new Item.Properties()));
+
+	public static final DeferredItem<DuctItem> DUCT = ITEMS.register("duct", () -> DuctItem.createWithProperties());
 
 
 

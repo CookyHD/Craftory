@@ -3,6 +3,7 @@ package io.atruecooky.locomotion.content;
 import java.util.function.Supplier;
 
 import io.atruecooky.locomotion.Locomotion;
+import io.atruecooky.locomotion.content.block.entity.DuctEntity;
 import io.atruecooky.locomotion.content.block.entity.SlagCollectorEntity;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -15,6 +16,10 @@ public class ModBlockEntitys {
 
 	public static final Supplier<BlockEntityType<SlagCollectorEntity>> SLAG_COLLECTOR = BLOCK_ENTITYS.register("slag_collector_entity", () ->
 		BlockEntityType.Builder.of(SlagCollectorEntity::new, ModBlocks.SLAG_COLLECTOR.get()).build(null)
+	);
+
+	public static final Supplier<BlockEntityType<DuctEntity>> DUCT = BLOCK_ENTITYS.register("duct_entity", () ->
+		BlockEntityType.Builder.of(DuctEntity::new, ModBlocks.DUCT.get()).build(null)
 	);
 
 	public static void register(IEventBus eventBus) {

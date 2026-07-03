@@ -2,6 +2,8 @@
   "item.locomotion.wrench": "Rutry Wrench",
   "item.locomotion.engine_termostat": "Engine Termostat",
   "item.locomotion.slag": "Slag",
+  "item.locomotion.needle_gun": "Needle Gun",
+  "item.locomotion.duct": "Heat Duct",
   "block.locomotion.slag_block": "Slag Block",
   "creative_tab.locomotion.main": "Locomotion",
   "creative_tab.locomotion.weapons": "Locomotion: Weapons"

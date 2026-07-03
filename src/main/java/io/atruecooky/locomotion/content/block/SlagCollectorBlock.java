@@ -12,6 +12,7 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 
 public class SlagCollectorBlock extends Block implements EntityBlock {
+	
 	public SlagCollectorBlock(BlockBehaviour.Properties properties) {
 		super(properties);
 	}

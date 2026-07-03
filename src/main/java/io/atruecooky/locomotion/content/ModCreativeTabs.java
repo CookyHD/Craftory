@@ -11,7 +11,7 @@ import net.minecraft.world.item.ItemStack;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
-public class ModCreativeTab {
+public class ModCreativeTabs {
 	
 	public static final DeferredRegister<CreativeModeTab> CREATIVE_TAB = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, Locomotion.MODID);
 
@@ -19,6 +19,7 @@ public class ModCreativeTab {
 		CreativeModeTab.builder()
 			.icon(() -> new ItemStack(ModItems.ICON.get()))
 			.title(Component.translatable("creative_tab.locomotion.main"))
+			.withTabsAfter(ResourceLocation.fromNamespaceAndPath(Locomotion.MODID, "weapons"))
 			.displayItems((parameter,output) -> {
 				output.accept(ModItems.WRENCH);
 				output.accept(ModItems.ENGINE_TERMOSTAT);
@@ -27,11 +28,11 @@ public class ModCreativeTab {
 				output.accept(ModBlocks.SLAG_BLOCK);
 				output.accept(ModBlocks.PLASTIC_BLOCK);
 				output.accept(ModBlocks.SLAG_COLLECTOR);
+				output.accept(ModItems.DUCT);
 			})
 			.build()
 	);
 
-	
 	public static final Supplier<CreativeModeTab> WEAPONS = CREATIVE_TAB.register("weapons", () ->
 		CreativeModeTab.builder()
 			.icon(() -> new ItemStack(ModItems.NEEDLE_GUN.get()))
