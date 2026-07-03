@@ -1,0 +1,42 @@
+modLoader="javafml"
+loaderVersion="1"
+license="MIT"
+
+[[mods]]
+
+modId="locomotion"
+displayName="Locomotion"
+version="0.0.1"
+
+authors="ATrueCooky"
+description='''
+...
+'''
+
+[[dependencies.locomotion]]
+    modId="neoforge"
+    type="required"
+    versionRange="[21.1.235,)"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.locomotion]]
+    modId="minecraft"
+    type="required"
+    versionRange="[1.21.1]"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.locomotion]]
+    modId="create"
+    type="required"
+    versionRange="[6.0.10,)"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.locomotion]]
+    modId="geckolib"
+    type="required"
+    versionRange="[4.9.2,)"
+    ordering="NONE"
+    side="CLIENT"

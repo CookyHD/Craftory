@@ -1,0 +1,13 @@
+{
+	"parent": "item/handheld",
+	"loader":"neoforge:separate_transforms",
+	"base": {
+		"parent": "locomotion:item/wrench_no_indicator"
+	},
+	"perspectives": {
+		"gui": {
+			"parent": "locomotion:item/wrench_with_indicator"
+		}
+	},
+	"gui_light": "front"
+}

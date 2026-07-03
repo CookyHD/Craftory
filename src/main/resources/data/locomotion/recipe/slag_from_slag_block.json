@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "locomotion:slag_block"
+    }
+  ],
+  "result": {
+    "id": "locomotion:slag",
+    "count": 9
+  }
+}
