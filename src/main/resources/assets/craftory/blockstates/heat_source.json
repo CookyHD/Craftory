@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "craftory:block/heat_source"
+    }
+  }
+}

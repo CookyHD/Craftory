@@ -4,8 +4,8 @@ license="MIT"
 
 [[mods]]
 
-modId="locomotion"
-displayName="Locomotion"
+modId="craftory"
+displayName="Craftory"
 version="0.0.1"
 
 authors="ATrueCooky"
@@ -13,30 +13,30 @@ description='''
 ...
 '''
 
-[[dependencies.locomotion]]
+[[dependencies.craftory]]
     modId="neoforge"
     type="required"
-    versionRange="[21.1.235,)"
+    versionRange="[21.1.248,)"
     ordering="NONE"
     side="BOTH"
 
-[[dependencies.locomotion]]
+[[dependencies.craftory]]
     modId="minecraft"
     type="required"
     versionRange="[1.21.1]"
     ordering="NONE"
     side="BOTH"
 
-[[dependencies.locomotion]]
+[[dependencies.craftory]]
     modId="create"
-    type="required"
+    type="optional"
     versionRange="[6.0.10,)"
     ordering="NONE"
     side="BOTH"
 
-[[dependencies.locomotion]]
-    modId="geckolib"
-    type="required"
-    versionRange="[4.9.2,)"
+[[dependencies.craftory]]
+    modId="computercraft"
+    type="optional"
+    versionRange="[1.120.0,)"
     ordering="NONE"
-    side="CLIENT"
+    side="BOTH"

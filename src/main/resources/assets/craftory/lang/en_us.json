@@ -1,0 +1,12 @@
+{
+  "item.craftory.wrench": "Wrench",
+  "item.craftory.termostat": "Termostat",
+
+  "block.craftory.heat_source": "Creative Heat Source",
+
+  "creative_tab.craftory.main": "Craftory",
+
+  "config.jade.plugin_craftory.heat_storage_provider": "Show Heat Storage",
+  "config.jade.plugin_craftory.fume_storage_provider": "Show Fume Storage",
+  "config.jade.plugin_craftory.flux_storage_provider": "Show Flux Storage"
+}
