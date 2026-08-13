@@ -3,9 +3,11 @@ build/
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/**/build/
 
+bin/
+!**/src/**/bin/
+
 .vscode/
 
-bin/
 run/
 !**/src/**/run/
 **/src/generated/**/.cache/
