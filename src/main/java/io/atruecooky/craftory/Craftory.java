@@ -8,6 +8,7 @@ import io.atruecooky.craftory.register.ModCreativeTabs;
 import io.atruecooky.craftory.register.ModDataComponents;
 import io.atruecooky.craftory.register.ModFumes;
 import io.atruecooky.craftory.register.ModItems;
+import io.atruecooky.craftory.register.ModMenuTypes;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
@@ -27,10 +28,11 @@ public class Craftory {
 
 		ModItems.register();
 		ModBlocks.register();
+		ModBlockEntityTypes.register();
 		ModFumes.register();
 		ModCreativeTabs.register(eventBus);
+		ModMenuTypes.register();
 		ModDataComponents.register();
-		ModBlockEntityTypes.register();
 
 	}
 
