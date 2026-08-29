@@ -6,7 +6,7 @@ import io.atruecooky.craftory.Craftory;
 import io.atruecooky.craftory.datagen.BlockModelGenerator;
 import io.atruecooky.craftory.datagen.BlockTagsGenerator;
 import io.atruecooky.craftory.datagen.EntriesGenerator;
-import io.atruecooky.craftory.datagen.ItemModelGenerator;
+// import io.atruecooky.craftory.datagen.ItemModelGenerator;
 // import net.minecraft.client.Minecraft;
 // import net.minecraft.client.renderer.texture.TextureManager;
 // import net.minecraft.client.renderer.texture.atlas.sources.DirectoryLister;
@@ -39,11 +39,11 @@ public class DataEvents {
 			new BlockModelGenerator(output, Craftory.MODID, existingFileHelper)
 		);
 
-		//ITEM-MODELS
-		generator.addProvider(
-			event.includeClient(),
-			new ItemModelGenerator(output, Craftory.MODID, existingFileHelper)
-		);
+		// //ITEM-MODELS
+		// generator.addProvider(
+		// 	event.includeClient(),
+		// 	new ItemModelGenerator(output, Craftory.MODID, existingFileHelper)
+		// );
 
 		//BLOCK-TAGS
 		generator.addProvider(
