@@ -15,7 +15,7 @@ public class CommonEvents {
 	
 	@SubscribeEvent
 	public static void onEvent(NewRegistryEvent event) {
-		FumeRegistry.newRegister(event);
+		event.register(FumeRegistry.FUME_REGISTRY);
 	}
 
 	@SubscribeEvent
@@ -26,6 +26,6 @@ public class CommonEvents {
 	@SubscribeEvent
 	public static void onEvent(RegisterItemDecorationsEvent event) {
 		event.register(ModItems.WRENCH, new WrenchDecorator());
-	} 
+	}
 
 }

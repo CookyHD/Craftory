@@ -1,15 +1,9 @@
+.eclipse
 .gradle
-build/
-!gradle/wrapper/gradle-wrapper.jar
-!**/src/**/build/
+.vscode
 
-bin/
-!**/src/**/bin/
+build
+bin
+run
 
-.vscode/
-
-run/
-!**/src/**/run/
-**/src/generated/**/.cache/
-repo/
-!**/src/**/repo/
+src\generated\resources\.cache

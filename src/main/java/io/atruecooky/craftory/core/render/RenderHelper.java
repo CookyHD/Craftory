@@ -25,15 +25,71 @@ public class RenderHelper {
 		Color color
 	) {
 		return consumer.addVertex(matrix, pos.x, pos.y, pos.z)
-			.setUv(uv.x, uv.y)
-			.setNormal(normal.x, normal.y, normal.z)
-			.setLight(packedLight)
-			.setOverlay(packedOverlay)
-			.setColor(color.r,color.g,color.b,color.a)
+		.setUv(uv.x, uv.y)
+		.setNormal(normal.x, normal.y, normal.z)
+		.setLight(packedLight)
+		.setOverlay(packedOverlay)
+		.setColor(color.r,color.g,color.b,color.a)
 		;
 	}
 
-	public final class NORMALS {
+	public static TextureAtlasSprite getTexture(ResourceLocation atlas, ResourceLocation texture) {
+		return Minecraft.getInstance().getTextureAtlas(atlas).apply(texture);
+	}
+
+	public static class FaceBuilder {
+
+		protected FaceBuilder () {}
+
+		private Boolean[] faces = {false,false,false,false,false,false};
+
+		public Boolean[] build() {
+			return this.faces;
+		}
+
+		public FaceBuilder north() {
+			this.faces[0] = true;
+			return this;
+		}
+
+		public FaceBuilder east() {
+			this.faces[1] = true;
+			return this;
+		}
+
+		public FaceBuilder south() {
+			this.faces[2] = true;
+			return this;
+		}
+
+		public FaceBuilder west() {
+			this.faces[3] = true;
+			return this;
+		}
+
+		public FaceBuilder top() {
+			this.faces[4] = true;
+			return this;
+		}
+
+		public FaceBuilder bottom() {
+			this.faces[5] = true;
+			return this;
+		}
+	}
+
+	public final class Faces {
+		public static final Boolean[] 
+			ALL = {true,true,true,true,true,true},
+			COMPASS = {true,true,true,true,false,false}
+		;
+
+		public static FaceBuilder builder() {
+			return new FaceBuilder();
+		}
+	}
+
+	public final class Normals {
 		public static final Vector3f
 			NORTH  = new Vector3f(0f, 0f, -1f),
 			EAST   = new Vector3f(1f, 0f, 0f),
@@ -44,7 +100,4 @@ public class RenderHelper {
 		;
 	}
 
-	public static TextureAtlasSprite getTexture(ResourceLocation atlas, ResourceLocation texture) {
-		return Minecraft.getInstance().getTextureAtlas(atlas).apply(texture);
-	}
 }

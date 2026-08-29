@@ -9,6 +9,7 @@ import io.atruecooky.craftory.Craftory;
 import io.atruecooky.craftory.content.block.entity.HeatSourceEntity;
 import io.atruecooky.craftory.core.render.RenderHelper;
 import io.atruecooky.craftory.core.render.RenderShapes;
+import io.atruecooky.craftory.core.render.RenderHelper.Faces;
 import io.atruecooky.craftory.utils.Color;
 import net.minecraft.client.renderer.LightTexture;
 import net.minecraft.client.renderer.MultiBufferSource;
@@ -46,10 +47,10 @@ public class HeatSourceEntityRender implements BlockEntityRenderer<HeatSourceEnt
 		
 		poseStack.translate(0f, Math.sin(time/4)/4, 0f);
 		
-		RenderShapes.cube(RenderShapes.ALL, poseStack, bufferSource, RenderType.SOLID, LightTexture.FULL_BRIGHT, 0, 16, 16, 16, SunTexture.getU0(), SunTexture.getU1(), SunTexture.getV0(), SunTexture.getV1(), Color.WHITE);
+		RenderShapes.cube(Faces.ALL, poseStack, bufferSource, RenderType.SOLID, LightTexture.FULL_BRIGHT, 0, 16, 16, 16, SunTexture.getU0(), SunTexture.getU1(), SunTexture.getV0(), SunTexture.getV1(), Color.WHITE);
 		poseStack.scale(1.2f, 1.2f, 1.2f);
 		poseStack.translate(-0.1f, -0.1f, -0.1f);
-		RenderShapes.cube(RenderShapes.ALL, poseStack, bufferSource, RenderType.TRANSLUCENT, LightTexture.FULL_BRIGHT, 0, 16, 16, 16, SunTexture.getU0(), SunTexture.getU1(), SunTexture.getV0(), SunTexture.getV1(), Color.WHITE.alpha(125));
+		RenderShapes.cube(Faces.ALL, poseStack, bufferSource, RenderType.TRANSLUCENT, LightTexture.FULL_BRIGHT, 0, 16, 16, 16, SunTexture.getU0(), SunTexture.getU1(), SunTexture.getV0(), SunTexture.getV1(), Color.WHITE.alpha(125));
 
 		poseStack.popPose();
 	}

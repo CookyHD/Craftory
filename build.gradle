@@ -13,11 +13,8 @@ version = mod_version
 group = mod_group_id
 
 sourceSets.main.resources {
-
 	srcDir('src/generated/resources')
-
-	exclude("**/*.bbmodel")
-	exclude("src/generated/**/.cache")
+	exclude("src/generated/resources/.cache")
 }
 
 repositories {
@@ -83,6 +80,7 @@ neoForge {
 		clientAuth {
 			clearLogs()
 			client()
+			if ("${world}" != '') programArguments.addAll('--quickPlaySingleplayer', "${world}")
 			devLogin = true
 			systemProperty 'neoforge.enabledGameTestNamespaces', project.mod_id
 		}
@@ -90,21 +88,7 @@ neoForge {
 		client {
 			clearLogs()
 			client()
-			systemProperty 'neoforge.enabledGameTestNamespaces', project.mod_id
-		}
-
-		clientAuthQuick {
-			clearLogs()
-			client()
-			programArguments.addAll('--quickPlaySingleplayer', 'Test')
-			devLogin = true
-			systemProperty 'neoforge.enabledGameTestNamespaces', project.mod_id
-		}
-
-		clientQuick {
-			clearLogs()
-			client()
-			programArguments.addAll('--quickPlaySingleplayer', 'Test')
+			if ("${world}" != '') programArguments.addAll('--quickPlaySingleplayer', "${world}")
 			systemProperty 'neoforge.enabledGameTestNamespaces', project.mod_id
 		}
 
@@ -121,6 +105,7 @@ neoForge {
 		}
 
 		data {
+			clearLogs()
 			data()
 			programArguments.addAll '--mod', project.mod_id, '--all', '--output', file('src/generated/resources/').getAbsolutePath(), '--existing', file('src/main/resources/').getAbsolutePath()
 		}
@@ -145,7 +130,7 @@ configurations {
 dependencies {
 
 	//REGISTRATE
-	implementation("com.tterrag.registrate:Registrate:${registrate_version}")
+	jarJar(api("com.tterrag.registrate:Registrate:$registrate_version"))
 
 	//CREATE
 	implementation("com.simibubi.create:create-${minecraft_version}:${create_version}:slim") { transitive = false }
@@ -166,28 +151,6 @@ dependencies {
 
 	//GECKOLIB
 	//implementation "software.bernie.geckolib:geckolib-neoforge-${minecraft_version}:${geckolib_version}"
-}
-
-var copyModMetadata = tasks.register("copyModMetadata", ProcessResources) {
-	from "src/main/templates"
-	into "build/generated/sources/modMetadata"
-}
-
-sourceSets.main.resources.srcDir copyModMetadata
-
-neoForge.ideSyncTask copyModMetadata
-
-publishing {
-	publications {
-		register('mavenJava', MavenPublication) {
-			from components.java
-		}
-	}
-	repositories {
-		maven {
-			url "file://${project.projectDir}/repo"
-		}
-	}
 }
 
 tasks.withType(JavaCompile).configureEach {

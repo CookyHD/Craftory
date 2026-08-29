@@ -13,6 +13,9 @@ description='''
 ...
 '''
 
+[[mixins]]
+config="craftory.mixins.json"
+
 [[dependencies.craftory]]
     modId="neoforge"
     type="required"

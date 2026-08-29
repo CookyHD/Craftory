@@ -1,7 +1,5 @@
 package io.atruecooky.craftory.core.render;
 
-import java.util.List;
-
 import org.joml.Matrix4f;
 import org.joml.Vector2f;
 import org.joml.Vector3f;
@@ -11,16 +9,16 @@ import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.blaze3d.vertex.VertexFormat;
 import com.mojang.blaze3d.vertex.VertexFormatElement;
 
+import io.atruecooky.craftory.core.render.RenderHelper.Faces;
+import io.atruecooky.craftory.core.render.RenderHelper.Normals;
 import io.atruecooky.craftory.utils.Color;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 
 public class RenderShapes {
 
-	public static final List<String> ALL = List.of("ALL");
-
 	public static void cube(
-		List<String> faces,
+		Boolean[] faces,
 		PoseStack poseStack,
 		MultiBufferSource bufferSource,
 		RenderType renderType,
@@ -66,53 +64,91 @@ public class RenderShapes {
 		VertexConsumer consumer = bufferSource.getBuffer(renderType);
 
 		// NORTH
-		if (faces.contains("NORTH") || faces.contains("ALL")) {
-			RenderHelper.vertex(consumer, matrix, packedLight, packedOverlay, front2, uv2, RenderHelper.NORMALS.NORTH, color);
-			RenderHelper.vertex(consumer, matrix, packedLight, packedOverlay, front1, uv1, RenderHelper.NORMALS.NORTH, color);
-			RenderHelper.vertex(consumer, matrix, packedLight, packedOverlay, front4, uv4, RenderHelper.NORMALS.NORTH, color);
-			RenderHelper.vertex(consumer, matrix, packedLight, packedOverlay, front3, uv3, RenderHelper.NORMALS.NORTH, color);
+		if (faces[0]) {
+			RenderHelper.vertex(consumer, matrix, packedLight, packedOverlay, front2, uv2, Normals.NORTH, color);
+			RenderHelper.vertex(consumer, matrix, packedLight, packedOverlay, front1, uv1, Normals.NORTH, color);
+			RenderHelper.vertex(consumer, matrix, packedLight, packedOverlay, front4, uv4, Normals.NORTH, color);
+			RenderHelper.vertex(consumer, matrix, packedLight, packedOverlay, front3, uv3, Normals.NORTH, color);
 		}
 
 		// EAST
-		if (faces.contains("EAST") || faces.contains("ALL")) {
-			RenderHelper.vertex(consumer, matrix, packedLight, packedOverlay, back2 , uv2, RenderHelper.NORMALS.EAST, color);
-			RenderHelper.vertex(consumer, matrix, packedLight, packedOverlay, front2, uv1, RenderHelper.NORMALS.EAST, color);
-			RenderHelper.vertex(consumer, matrix, packedLight, packedOverlay, front3, uv4, RenderHelper.NORMALS.EAST, color);
-			RenderHelper.vertex(consumer, matrix, packedLight, packedOverlay, back3 , uv3, RenderHelper.NORMALS.EAST, color);
+		if (faces[1]) {
+			RenderHelper.vertex(consumer, matrix, packedLight, packedOverlay, back2 , uv2, Normals.EAST, color);
+			RenderHelper.vertex(consumer, matrix, packedLight, packedOverlay, front2, uv1, Normals.EAST, color);
+			RenderHelper.vertex(consumer, matrix, packedLight, packedOverlay, front3, uv4, Normals.EAST, color);
+			RenderHelper.vertex(consumer, matrix, packedLight, packedOverlay, back3 , uv3, Normals.EAST, color);
 		}
 
 		// SOUTH
-		if (faces.contains("SOUTH") || faces.contains("ALL")) {
-			RenderHelper.vertex(consumer, matrix, packedLight, packedOverlay, back1, uv2, RenderHelper.NORMALS.SOUTH, color);
-			RenderHelper.vertex(consumer, matrix, packedLight, packedOverlay, back2, uv1, RenderHelper.NORMALS.SOUTH, color);
-			RenderHelper.vertex(consumer, matrix, packedLight, packedOverlay, back3, uv4, RenderHelper.NORMALS.SOUTH, color);
-			RenderHelper.vertex(consumer, matrix, packedLight, packedOverlay, back4, uv3, RenderHelper.NORMALS.SOUTH, color);
+		if (faces[2]) {
+			RenderHelper.vertex(consumer, matrix, packedLight, packedOverlay, back1, uv2, Normals.SOUTH, color);
+			RenderHelper.vertex(consumer, matrix, packedLight, packedOverlay, back2, uv1, Normals.SOUTH, color);
+			RenderHelper.vertex(consumer, matrix, packedLight, packedOverlay, back3, uv4, Normals.SOUTH, color);
+			RenderHelper.vertex(consumer, matrix, packedLight, packedOverlay, back4, uv3, Normals.SOUTH, color);
 		}
 
 		// WEST
-		if (faces.contains("WEST") || faces.contains("ALL")) {
-			RenderHelper.vertex(consumer, matrix, packedLight, packedOverlay, front1, uv2, RenderHelper.NORMALS.WEST, color);
-			RenderHelper.vertex(consumer, matrix, packedLight, packedOverlay, back1 , uv1, RenderHelper.NORMALS.WEST, color);
-			RenderHelper.vertex(consumer, matrix, packedLight, packedOverlay, back4 , uv4, RenderHelper.NORMALS.WEST, color);
-			RenderHelper.vertex(consumer, matrix, packedLight, packedOverlay, front4, uv3, RenderHelper.NORMALS.WEST, color);
+		if (faces[3]) {
+			RenderHelper.vertex(consumer, matrix, packedLight, packedOverlay, front1, uv2, Normals.WEST, color);
+			RenderHelper.vertex(consumer, matrix, packedLight, packedOverlay, back1 , uv1, Normals.WEST, color);
+			RenderHelper.vertex(consumer, matrix, packedLight, packedOverlay, back4 , uv4, Normals.WEST, color);
+			RenderHelper.vertex(consumer, matrix, packedLight, packedOverlay, front4, uv3, Normals.WEST, color);
 		}
 
 		// TOP
-		if (faces.contains("TOP") || faces.contains("ALL")) {
-			RenderHelper.vertex(consumer, matrix, packedLight, packedOverlay, back4 , uv2, RenderHelper.NORMALS.TOP, color);
-			RenderHelper.vertex(consumer, matrix, packedLight, packedOverlay, back3 , uv1, RenderHelper.NORMALS.TOP, color);
-			RenderHelper.vertex(consumer, matrix, packedLight, packedOverlay, front3, uv4, RenderHelper.NORMALS.TOP, color);
-			RenderHelper.vertex(consumer, matrix, packedLight, packedOverlay, front4, uv3, RenderHelper.NORMALS.TOP, color);
+		if (faces[4]) {
+			RenderHelper.vertex(consumer, matrix, packedLight, packedOverlay, back4 , uv2, Normals.TOP, color);
+			RenderHelper.vertex(consumer, matrix, packedLight, packedOverlay, back3 , uv1, Normals.TOP, color);
+			RenderHelper.vertex(consumer, matrix, packedLight, packedOverlay, front3, uv4, Normals.TOP, color);
+			RenderHelper.vertex(consumer, matrix, packedLight, packedOverlay, front4, uv3, Normals.TOP, color);
 		}
 
 		// BOTTOM
-		if (faces.contains("BOTTOM") || faces.contains("ALL")) {
-			RenderHelper.vertex(consumer, matrix, packedLight, packedOverlay, front1, uv2, RenderHelper.NORMALS.BOTTOM, color);
-			RenderHelper.vertex(consumer, matrix, packedLight, packedOverlay, front2, uv1, RenderHelper.NORMALS.BOTTOM, color);
-			RenderHelper.vertex(consumer, matrix, packedLight, packedOverlay, back2 , uv4, RenderHelper.NORMALS.BOTTOM, color);
-			RenderHelper.vertex(consumer, matrix, packedLight, packedOverlay, back1 , uv3, RenderHelper.NORMALS.BOTTOM, color);
+		if (faces[5]) {
+			RenderHelper.vertex(consumer, matrix, packedLight, packedOverlay, front1, uv2, Normals.BOTTOM, color);
+			RenderHelper.vertex(consumer, matrix, packedLight, packedOverlay, front2, uv1, Normals.BOTTOM, color);
+			RenderHelper.vertex(consumer, matrix, packedLight, packedOverlay, back2 , uv4, Normals.BOTTOM, color);
+			RenderHelper.vertex(consumer, matrix, packedLight, packedOverlay, back1 , uv3, Normals.BOTTOM, color);
 		}
 	
+	}
+	
+	public static float tube(
+		PoseStack poseStack,
+		MultiBufferSource bufferSource,
+		RenderType renderType,
+		int packedLight,
+		int packedOverlay,
+		int size,
+		int length,
+		float u0,
+		float u1,
+		float v0,
+		float v1,
+		Color color
+	) {
+
+		float width = (float)size / 16f;
+
+		int stpes = (int)Math.floor((float)length / (float)size);
+		int reminder = (int)((float)length % (float)size);
+
+		float y_offset = 0f;
+		
+		for (int i = 0; i < stpes; i++) {
+			y_offset += width;
+			poseStack.translate(0.0, width * i, 0.0);
+			cube(Faces.COMPASS, poseStack, bufferSource, renderType, packedLight, packedOverlay, size, size, size, u0, u1, v0, v1, color);
+			poseStack.translate(0.0, -(width * i), 0.0);
+		}
+
+		float pixel_size = (v1 - v0) / (float)size;
+
+		poseStack.translate(0.0, y_offset, 0.0);
+		cube(Faces.COMPASS, poseStack, bufferSource, renderType, packedLight, packedOverlay, size, size-reminder, size, u0, u1, v0+(pixel_size*reminder), v1, color);
+		poseStack.translate(0.0, -y_offset, 0.0);
+
+		return y_offset + ((float)reminder / 16f);
 	}
 
 }

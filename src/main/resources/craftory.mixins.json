@@ -1,0 +1,15 @@
+{
+	"required": true,
+	"package": "io.atruecooky.craftory.mixin",
+	"compatibilityLevel": "JAVA_21",
+	"mixins": [
+
+	],
+	"client": [
+		"AbstractContainerScreenAccessor",
+		"CreativeModeInventoryScreenMixin"
+	],
+	"injectors": {
+		"defaultRequire": 1
+	}
+}
