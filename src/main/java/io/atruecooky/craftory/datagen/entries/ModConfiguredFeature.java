@@ -21,6 +21,7 @@ public class ModConfiguredFeature {
 	public static final ResourceKey<ConfiguredFeature<?, ?>> TIN_ORE = key("tin_ore");
 
 	public static void bootstrap(BootstrapContext<ConfiguredFeature<?, ?>> context) {
+		
 		RuleTest stone = new TagMatchTest(BlockTags.STONE_ORE_REPLACEABLES);
 		RuleTest deepslate = new TagMatchTest(BlockTags.DEEPSLATE_ORE_REPLACEABLES);
 
@@ -29,7 +30,7 @@ public class ModConfiguredFeature {
 			OreConfiguration.target(deepslate, ModBlocks.DEEPSLATE_TIN_ORE.get().defaultBlockState())
 		);
 
-		FeatureUtils.register(context, TIN_ORE, Feature.ORE, new OreConfiguration(tin_ore, 20));
+		FeatureUtils.register(context, TIN_ORE, Feature.ORE, new OreConfiguration(tin_ore, 8));
 
 	}
 

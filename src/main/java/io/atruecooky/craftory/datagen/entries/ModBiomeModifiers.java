@@ -25,15 +25,11 @@ public class ModBiomeModifiers {
 		var featureLookup = context.lookup(Registries.PLACED_FEATURE);
 		Holder<PlacedFeature> tinOre = featureLookup.getOrThrow(ModPlacedFeature.TIN_ORE);
 
-		context.register(TIN_ORE, addOre(overworld, tinOre));
-
+		context.register(TIN_ORE, new AddFeaturesBiomeModifier(overworld, HolderSet.direct(tinOre), Decoration.UNDERGROUND_ORES));
 	}
 
 	public static ResourceKey<BiomeModifier> key(String id) {
 		return ResourceKey.create(NeoForgeRegistries.Keys.BIOME_MODIFIERS, Craftory.namespace(id));
 	}
-
-	public static AddFeaturesBiomeModifier addOre(HolderSet<Biome> biomes, Holder<PlacedFeature> placedFeature) {
-		return new AddFeaturesBiomeModifier(biomes, HolderSet.direct(placedFeature), Decoration.UNDERGROUND_ORES);
-	}
+	
 }

@@ -15,7 +15,7 @@ public class Directions {
 		Direction.DOWN
 	);
 
-	public static final List<Direction> COMPASS = List.of(
+	public static final List<Direction> HORIZONTAL = List.of(
 		Direction.NORTH,
 		Direction.EAST,
 		Direction.SOUTH,

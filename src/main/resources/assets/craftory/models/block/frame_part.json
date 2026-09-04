@@ -1,0 +1,114 @@
+{
+	"render_type": "cutout",
+	"ambientocclusion": false,
+	"textures": {
+		"0": "craftory:block/frame",
+		"particle": "craftory:block/frame"
+	},
+	"elements": [
+		{
+			"from": [4, 4, 0],
+			"to": [12, 4, 4],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 8, 2]},
+			"faces": {
+				"north": {"uv": [0, 0, 1, 1], "texture": "#0"},
+				"east": {"uv": [0, 0, 1, 1], "texture": "#0"},
+				"south": {"uv": [0, 0, 1, 1], "texture": "#0"},
+				"west": {"uv": [0, 0, 1, 1], "texture": "#0"},
+				"up": {"uv": [0, 4, 4, 12], "rotation": 90, "texture": "#0"},
+				"down": {"uv": [0, 0, 1, 1], "texture": "#0"}
+			}
+		},
+		{
+			"from": [4, 12, 0],
+			"to": [12, 12, 4],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 10, 2]},
+			"faces": {
+				"north": {"uv": [0, 0, 1, 1], "texture": "#0"},
+				"east": {"uv": [0, 0, 1, 1], "texture": "#0"},
+				"south": {"uv": [0, 0, 1, 1], "texture": "#0"},
+				"west": {"uv": [0, 0, 1, 1], "texture": "#0"},
+				"up": {"uv": [0, 0, 1, 1], "texture": "#0"},
+				"down": {"uv": [4, 4, 0, 12], "rotation": 90, "texture": "#0"}
+			}
+		},
+		{
+			"from": [4, 12, 0],
+			"to": [12, 12, 4],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 10, 2]},
+			"faces": {
+				"north": {"uv": [0, 0, 1, 1], "texture": "#0"},
+				"east": {"uv": [0, 0, 1, 1], "texture": "#0"},
+				"south": {"uv": [0, 0, 1, 1], "texture": "#0"},
+				"west": {"uv": [0, 0, 1, 1], "texture": "#0"},
+				"up": {"uv": [0, 4, 4, 12], "rotation": 90, "texture": "#0"},
+				"down": {"uv": [0, 0, 1, 1], "texture": "#0"}
+			}
+		},
+		{
+			"from": [4, 4, 0],
+			"to": [12, 4, 4],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 8, 2]},
+			"faces": {
+				"north": {"uv": [0, 0, 1, 1], "texture": "#0"},
+				"east": {"uv": [0, 0, 1, 1], "texture": "#0"},
+				"south": {"uv": [0, 0, 1, 1], "texture": "#0"},
+				"west": {"uv": [0, 0, 1, 1], "texture": "#0"},
+				"up": {"uv": [0, 0, 1, 1], "texture": "#0"},
+				"down": {"uv": [4, 4, 0, 12], "rotation": 90, "texture": "#0"}
+			}
+		},
+		{
+			"from": [12, 4, 0],
+			"to": [12, 12, 4],
+			"rotation": {"angle": 0, "axis": "z", "origin": [8, 8, 2]},
+			"faces": {
+				"north": {"uv": [0, 0, 1, 1], "rotation": 90, "texture": "#0"},
+				"east": {"uv": [0, 0, 1, 1], "rotation": 270, "texture": "#0"},
+				"south": {"uv": [0, 0, 1, 1], "rotation": 270, "texture": "#0"},
+				"west": {"uv": [0, 4, 4, 12], "texture": "#0"},
+				"up": {"uv": [0, 0, 1, 1], "rotation": 270, "texture": "#0"},
+				"down": {"uv": [0, 0, 1, 1], "rotation": 270, "texture": "#0"}
+			}
+		},
+		{
+			"from": [12, 4, 0],
+			"to": [12, 12, 4],
+			"rotation": {"angle": 0, "axis": "z", "origin": [8, 8, 2]},
+			"faces": {
+				"north": {"uv": [0, 0, 1, 1], "rotation": 90, "texture": "#0"},
+				"east": {"uv": [4, 4, 0, 12], "texture": "#0"},
+				"south": {"uv": [0, 0, 1, 1], "rotation": 270, "texture": "#0"},
+				"west": {"uv": [0, 0, 1, 1], "rotation": 270, "texture": "#0"},
+				"up": {"uv": [0, 0, 1, 1], "rotation": 270, "texture": "#0"},
+				"down": {"uv": [0, 0, 1, 1], "rotation": 270, "texture": "#0"}
+			}
+		},
+		{
+			"from": [4, 4, 0],
+			"to": [4, 12, 4],
+			"rotation": {"angle": 0, "axis": "z", "origin": [6, 8, 2]},
+			"faces": {
+				"north": {"uv": [0, 0, 1, 1], "rotation": 90, "texture": "#0"},
+				"east": {"uv": [4, 4, 0, 12], "texture": "#0"},
+				"south": {"uv": [0, 0, 1, 1], "rotation": 270, "texture": "#0"},
+				"west": {"uv": [0, 0, 1, 1], "rotation": 270, "texture": "#0"},
+				"up": {"uv": [0, 0, 1, 1], "rotation": 270, "texture": "#0"},
+				"down": {"uv": [0, 0, 1, 1], "rotation": 270, "texture": "#0"}
+			}
+		},
+		{
+			"from": [4, 4, 0],
+			"to": [4, 12, 4],
+			"rotation": {"angle": 0, "axis": "z", "origin": [6, 8, 2]},
+			"faces": {
+				"north": {"uv": [0, 0, 1, 1], "rotation": 90, "texture": "#0"},
+				"east": {"uv": [0, 0, 1, 1], "rotation": 270, "texture": "#0"},
+				"south": {"uv": [0, 0, 1, 1], "rotation": 270, "texture": "#0"},
+				"west": {"uv": [0, 4, 4, 12], "texture": "#0"},
+				"up": {"uv": [0, 0, 1, 1], "rotation": 270, "texture": "#0"},
+				"down": {"uv": [0, 0, 1, 1], "rotation": 270, "texture": "#0"}
+			}
+		}
+	]
+}

@@ -10,7 +10,7 @@ import net.minecraft.network.codec.ByteBufCodecs;
 
 public class ModDataComponents {
 
-	public static final RegistryEntry<DataComponentType<?>,DataComponentType<Integer>> WRENCH_MODE = Craftory.REGISTRATE.simple("wrench_mode", Registries.DATA_COMPONENT_TYPE, () -> new DataComponentType.Builder<Integer>().persistent(Codec.INT).networkSynchronized(ByteBufCodecs.INT).build());
+	public static final RegistryEntry<DataComponentType<?>,DataComponentType<Integer>> WRENCH_MODE = Craftory.registrate().simple("wrench_mode", Registries.DATA_COMPONENT_TYPE, () -> new DataComponentType.Builder<Integer>().persistent(Codec.INT).networkSynchronized(ByteBufCodecs.INT).build());
 
 	public static void register() {}
 }

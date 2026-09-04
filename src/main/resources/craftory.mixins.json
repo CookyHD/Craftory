@@ -6,8 +6,9 @@
 
 	],
 	"client": [
-		"AbstractContainerScreenAccessor",
-		"CreativeModeInventoryScreenMixin"
+		"ContainerScreenAccessor",
+		"CreativeModeInventoryScreenMixin",
+		"GuiGraphicsInvoker"
 	],
 	"injectors": {
 		"defaultRequire": 1

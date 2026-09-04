@@ -19,13 +19,15 @@ public class ModPlacedFeature {
 	public static final ResourceKey<PlacedFeature> TIN_ORE = key("tin_ore");
 
 	public static void bootstrap(BootstrapContext<PlacedFeature> contex) {
+
 		var lookup = contex.lookup(Registries.CONFIGURED_FEATURE);
 		PlacementUtils.register(contex, TIN_ORE, lookup.getOrThrow(ModConfiguredFeature.TIN_ORE), List.of(
 			HeightRangePlacement.uniform(VerticalAnchor.absolute(-64), VerticalAnchor.absolute(64)),
-			CountPlacement.of(50),
+			CountPlacement.of(4),
 			InSquarePlacement.spread(),
 			BiomeFilter.biome()
 		));
+		
 	}
 
 	public static ResourceKey<PlacedFeature> key(String id) {

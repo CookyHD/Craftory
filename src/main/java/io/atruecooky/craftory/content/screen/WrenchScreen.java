@@ -13,8 +13,6 @@ public class WrenchScreen extends AbstractContainerScreen<WrenchMenu> {
 	}
 
 	@Override
-	protected void renderBg(GuiGraphics guiGraphics, float partialTick, int mouseX, int mouseY) {
-		//NOTHING LMAO
-	}
+	protected void renderBg(GuiGraphics guiGraphics, float partialTick, int mouseX, int mouseY) {}
 
 }

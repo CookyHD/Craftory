@@ -1,0 +1,110 @@
+{
+	"multipart": [
+		{
+			"when": {
+				"north": "true"
+			},
+			"apply": {
+				"model": "craftory:block/frame_part"
+			}
+		},
+		{
+			"when": {
+				"east": "true"
+			},
+			"apply": {
+				"model": "craftory:block/frame_part",
+				"y": 90
+			}
+		},
+		{
+			"when": {
+				"south": "true"
+			},
+			"apply": {
+				"model": "craftory:block/frame_part",
+				"y": 180
+			}
+		},
+		{
+			"when": {
+				"west": "true"
+			},
+			"apply": {
+				"model": "craftory:block/frame_part",
+				"y": 270
+			}
+		},
+		{
+			"when": {
+				"up": "true"
+			},
+			"apply": {
+				"model": "craftory:block/frame_part",
+				"x": 270
+			} 
+		},
+		{
+			"when": {
+				"down": "true"
+			},
+			"apply": {
+				"model": "craftory:block/frame_part",
+				"x": 90
+			}
+		},
+		{
+			"when": {
+				"north": "false"
+			},
+			"apply": {
+				"model": "craftory:block/frame_cover"
+			}
+		},
+		{
+			"when": {
+				"east": "false"
+			},
+			"apply": {
+				"model": "craftory:block/frame_cover",
+				"y": 90
+			}
+		},
+		{
+			"when": {
+				"south": "false"
+			},
+			"apply": {
+				"model": "craftory:block/frame_cover",
+				"y": 180
+			}
+		},
+		{
+			"when": {
+				"west": "false"
+			},
+			"apply": {
+				"model": "craftory:block/frame_cover",
+				"y": 270
+			}
+		},
+		{
+			"when": {
+				"up": "false"
+			},
+			"apply": {
+				"model": "craftory:block/frame_cover",
+				"x": 270
+			}
+		},
+		{
+			"when": {
+				"down": "false"
+			},
+			"apply": {
+				"model": "craftory:block/frame_cover",
+				"x": 90
+			}
+		}
+	]
+}

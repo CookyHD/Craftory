@@ -1,8 +1,15 @@
 {
   "item.craftory.wrench": "Wrench",
-  "item.craftory.termostat": "Termostat",
+
+  "item.craftory.raw_tin": "Raw Tin",
+
+  "block.craftory.frame": "Construction Frame",
 
   "block.craftory.heat_source": "Creative Heat Source",
+  "block.craftory.query": "Query",
+
+  "block.craftory.tin_ore": "Tin Ore",
+  "block.craftory.deepslate_tin_ore": "Deepslate Tin Ore",
 
   "creative_tab.craftory.main": "Craftory",
   "creative_tab.craftory.blocks": "Craftory: Block's",

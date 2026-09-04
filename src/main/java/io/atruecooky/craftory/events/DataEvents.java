@@ -1,11 +1,16 @@
 package io.atruecooky.craftory.events;
 
+import java.util.List;
+import java.util.Set;
 import java.util.concurrent.CompletableFuture;
 
 import io.atruecooky.craftory.Craftory;
+import io.atruecooky.craftory.datagen.BlockLootTableGenerator;
 import io.atruecooky.craftory.datagen.BlockModelGenerator;
 import io.atruecooky.craftory.datagen.BlockTagsGenerator;
 import io.atruecooky.craftory.datagen.EntriesGenerator;
+import io.atruecooky.craftory.datagen.ItemModelGenerator;
+import io.atruecooky.craftory.datagen.ItemTagGenerator;
 // import io.atruecooky.craftory.datagen.ItemModelGenerator;
 // import net.minecraft.client.Minecraft;
 // import net.minecraft.client.renderer.texture.TextureManager;
@@ -14,6 +19,8 @@ import io.atruecooky.craftory.datagen.EntriesGenerator;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
+import net.minecraft.data.loot.LootTableProvider;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 // import net.minecraft.resources.ResourceLocation;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -39,17 +46,27 @@ public class DataEvents {
 			new BlockModelGenerator(output, Craftory.MODID, existingFileHelper)
 		);
 
-		// //ITEM-MODELS
-		// generator.addProvider(
-		// 	event.includeClient(),
-		// 	new ItemModelGenerator(output, Craftory.MODID, existingFileHelper)
-		// );
+		//ITEM-MODELS
+		generator.addProvider(
+			event.includeClient(),
+			new ItemModelGenerator(output, Craftory.MODID, existingFileHelper)
+		);
 
-		//BLOCK-TAGS
+		//TAGS
+
+		BlockTagsGenerator blockTags = new BlockTagsGenerator(output, lookupProvider, Craftory.MODID, existingFileHelper);
+		ItemTagGenerator itemTags = new ItemTagGenerator(output, lookupProvider, blockTags, Craftory.MODID, existingFileHelper);
+
 		generator.addProvider(
 			event.includeServer(),
-			new BlockTagsGenerator(output, lookupProvider, Craftory.MODID, existingFileHelper)
+			blockTags
 		);
+
+		generator.addProvider(
+			event.includeServer(),
+			itemTags
+		);
+	
 
 		//ENTRIES
 		generator.addProvider(
@@ -57,39 +74,22 @@ public class DataEvents {
 			new EntriesGenerator(output, lookupProvider)
 		);
 
-		// //FUME-ATLAS
-		// generator.addProvider(
-		// 	event.includeClient(),
-		// 	new SpriteSourceProvider(output, lookupProvider, Craftory.MODID, existingFileHelper) {
-		// 		@Override
-		// 		protected void gather() {
-		// 			this.atlas(Craftory.namespace("fumes")).addSource(new DirectoryLister("fume", ""));
-		// 		}
-		// 	}
-		// );
-
+		//LOOT-TABLES
+		generator.addProvider(
+			event.includeServer(),
+			new LootTableProvider(
+				output,
+				Set.of(),
+				List.of(
+					new LootTableProvider.SubProviderEntry(
+						BlockLootTableGenerator::new,
+						LootContextParamSets.BLOCK
+					)
+				),
+				lookupProvider
+			)
+		);
 	}
 
-	// //ATLAS-RELOADER
-	// @SubscribeEvent
-	// public static void onEvent(RegisterClientReloadListenersEvent event) {
-	// 	event.registerReloadListener(FumeAtlas.getIntance());
-	// }
-
-	// public static class FumeAtlas extends TextureAtlasHolder {
-
-	// 	public static final ResourceLocation LOCATION = Craftory.namespace("textures/atlas/fumes.png");
-
-	// 	public FumeAtlas(TextureManager textureManager) {
-	// 		super(textureManager, LOCATION, Craftory.namespace("fumes"));
-	// 	}
-
-	// 	private static FumeAtlas intance;
-
-	// 	public static FumeAtlas getIntance() {
-	// 		if (intance == null) intance = new FumeAtlas(Minecraft.getInstance().getTextureManager());
-	// 		return intance;
-	// 	}
-	// }
 }
 

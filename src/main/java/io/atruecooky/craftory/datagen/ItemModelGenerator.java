@@ -13,8 +13,8 @@ public class ItemModelGenerator extends ItemModelProvider {
 
 	@Override
 	protected void registerModels() {
-		this.handheldItem(ModItems.WRENCH.get());
-		this.basicItem(ModItems.TERMOSTAT.get());
+		handheldItem(ModItems.WRENCH.get());
+		basicItem(ModItems.RAW_TIN.get());
 	}
 
 }

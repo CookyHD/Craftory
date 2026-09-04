@@ -18,12 +18,11 @@ public class ModCreativeTabs {
 		.title(Component.translatable("creative_tab.craftory.main"))
 		.withTabsAfter(Craftory.namespace("blocks"))
 		.displayItems((parameter, output) -> {
-			output.accept(ModItems.WRENCH);
-			output.accept(ModItems.TERMOSTAT);
 			output.accept(ModBlocks.HEAT_SOURCE);
+			output.accept(ModItems.WRENCH);
+			output.accept(ModItems.RAW_TIN);
 		}),
-		Craftory.namespace("textures/gui/icon/main.png"),
-		32
+		Craftory.namespace("textures/gui/icon/main.png")
 	));
 	
 	public static final DeferredHolder<CreativeModeTab, IconCreativeModeTab> BLOCKS = CREATIVE_MODE_TAB.register("blocks", () -> new IconCreativeModeTab(
@@ -31,11 +30,10 @@ public class ModCreativeTabs {
 		.title(Component.translatable("creative_tab.craftory.blocks"))
 		.withTabsBefore(Craftory.namespace("main"))
 		.displayItems((parameter, output) -> {
-			output.accept(ModBlocks.TIN_ORE);
-			output.accept(ModBlocks.DEEPSLATE_TIN_ORE);
+			output.accept(ModBlocks.TIN_ORE.get());
+			output.accept(ModBlocks.DEEPSLATE_TIN_ORE.get());
 		}),
-		Craftory.namespace("textures/gui/icon/blocks.png"),
-		32
+		Craftory.namespace("textures/gui/icon/blocks.png")
 	));
 	
 	public static void register(IEventBus eventBus) {

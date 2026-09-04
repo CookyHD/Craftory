@@ -12,44 +12,43 @@ import net.minecraft.client.gui.screens.inventory.CreativeModeInventoryScreen;
 import net.minecraft.world.item.CreativeModeTab;
 
 @Mixin(CreativeModeInventoryScreen.class)
-public abstract class CreativeModeInventoryScreenMixin {
+public class CreativeModeInventoryScreenMixin {
 
 	@Inject(method = "renderTabButton", at = @At("HEAD"), cancellable = true)
 	public void craftory$renderTabButton(GuiGraphics guiGraphics, CreativeModeTab creativeModeTab, CallbackInfo ci) {
 		if (creativeModeTab instanceof IconCreativeModeTab tabWithIcon) {
 
-			int leftPos = ((AbstractContainerScreenAccessor) this).craftory$getLeftPos();
-			int topPos = ((AbstractContainerScreenAccessor) this).craftory$getTopPos();
+			int leftPos = ((ContainerScreenAccessor) this).craftory$getLeftPos();
+			int topPos = ((ContainerScreenAccessor) this).craftory$getTopPos();
 
-			int x = (leftPos + this.craftory$getTabX(tabWithIcon) + 5) * 2;
-			int y = (topPos + this.craftory$getTabY(tabWithIcon) + 13) * 2;
+			int x = (leftPos + this.craftory$getTabX(tabWithIcon) + 5);
+			int y = (topPos + this.craftory$getTabY(tabWithIcon) + 13);
 
-			int size = tabWithIcon.getIconSize();
-			float scale = 16f / size;
-
-			guiGraphics.pose().translate(0, 0, 100f);
-			guiGraphics.pose().scale(scale, scale, 1f);
-
-			guiGraphics.blit(
-					tabWithIcon.getIcon(),
-					x,
-					y,
-					0, 0,
-					size, size,
-					size, size
+			((GuiGraphicsInvoker)guiGraphics).craftory$innerBlit(
+				tabWithIcon.getIcon(),
+				x,
+				x+16,
+				y,
+				y+16,
+				1,
+				0,
+				1,
+				0,
+				1
 			);
-
-			guiGraphics.pose().scale(scale * 4f, scale * 4f, 1f);
-			guiGraphics.pose().translate(0, 0, -100f);
 
 			return;
 		}
 	}
 
 	@Shadow(prefix = "craftory$")
-	abstract int craftory$getTabX(CreativeModeTab tab);
+	public int craftory$getTabX(CreativeModeTab tab) {
+		return 0;
+	};
 
 	@Shadow(prefix = "craftory$")
-	abstract int craftory$getTabY(CreativeModeTab tab);
+	public int craftory$getTabY(CreativeModeTab tab) {
+		return 0;
+	};
 
 }

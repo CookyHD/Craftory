@@ -8,7 +8,7 @@ import io.atruecooky.craftory.content.screen.WrenchScreen;
 
 public class ModMenuTypes {
 
-	public static final MenuEntry<WrenchMenu> WRENCH_MENU = Craftory.REGISTRATE.menu("wrench_menu", WrenchMenu::new, () -> WrenchScreen::new)
+	public static final MenuEntry<WrenchMenu> WRENCH_MENU = Craftory.registrate().menu("wrench_menu", WrenchMenu::new, () -> WrenchScreen::new)
 	.register();
 
 	public static void register() {}

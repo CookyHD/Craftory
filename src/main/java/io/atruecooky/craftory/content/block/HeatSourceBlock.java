@@ -2,7 +2,7 @@ package io.atruecooky.craftory.content.block;
 
 import com.mojang.serialization.MapCodec;
 
-import io.atruecooky.craftory.content.block.entity.HeatSourceEntity;
+import io.atruecooky.craftory.content.block_entity.HeatSourceEntity;
 import io.atruecooky.craftory.register.ModBlockEntityTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.EntityBlock;

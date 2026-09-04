@@ -8,20 +8,13 @@ public class IconCreativeModeTab extends CreativeModeTab {
 
 	private final ResourceLocation Icon;
 
-	private final int IconSize;
-
-	public IconCreativeModeTab(CreativeModeTab.Builder builder, ResourceLocation icon, int iconSize) {
+	public IconCreativeModeTab(CreativeModeTab.Builder builder, ResourceLocation icon) {
 		super(builder);
 		this.Icon = icon;
-		this.IconSize = iconSize;
 	}
 
 	public ResourceLocation getIcon() {
 		return this.Icon;
-	}
-
-	public int getIconSize() {
-		return this.IconSize;
 	}
 
 	@Override

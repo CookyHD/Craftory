@@ -10,8 +10,8 @@ public class RenderTypes {
 
 	public static final int BUFFER_SIZE = 256;
 
-	public static final RenderType LINES = RenderType.create(
-		layername("lines"),
+	public static final RenderType TEST = RenderType.create(
+		layername("test"),
 		DefaultVertexFormat.POSITION_COLOR,
 		VertexFormat.Mode.LINES,
 		BUFFER_SIZE,
