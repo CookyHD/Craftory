@@ -6,6 +6,7 @@ import io.atruecooky.craftory.content.block_entity.QueryBlockEntity;
 import io.atruecooky.craftory.register.ModBlockEntityTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -51,7 +52,7 @@ public class QueryBlock extends Block implements EntityBlock {
 
 	@Override
 	public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level getterLevel, BlockState _blockState, BlockEntityType<T> _blockEntityType) {
-		if (!getterLevel.isClientSide()) return (level, pos, blockState, blockEntity) -> QueryBlockEntity.tickServer(level, pos, blockState, (QueryBlockEntity)blockEntity);
+		if (!getterLevel.isClientSide()) return (level, pos, blockState, blockEntity) -> QueryBlockEntity.tickServer((ServerLevel)level, pos, blockState, (QueryBlockEntity)blockEntity);
 		else return (level, pos, blockState, blockEntity) -> QueryBlockEntity.tickClient(level, pos, blockState, (QueryBlockEntity)blockEntity);
 	}
 

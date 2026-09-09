@@ -12,7 +12,7 @@ import snownee.jade.api.config.IPluginConfig;
 public class HeatStorageProvider implements IBlockComponentProvider,IServerDataProvider<BlockAccessor> {
 
 	@Override
-	public void appendTooltip(ITooltip tooltip, BlockAccessor accessor, IPluginConfig _pluginConfig) {
+	public void appendTooltip(ITooltip tooltip, BlockAccessor accessor, IPluginConfig pluginConfig) {
 
 	}
 

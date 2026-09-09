@@ -23,7 +23,7 @@ public record WrenchPayload(int mode) implements CustomPacketPayload {
 		return TYPE;
 	}
 
-	public static void playloadHandlers(PayloadRegistrar registrar) {
+	public static void getPayloadHandlers(PayloadRegistrar registrar) {
 		registrar.playToServer(
 			TYPE,
 			STREAM_CODEC,

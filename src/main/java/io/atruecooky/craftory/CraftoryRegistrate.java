@@ -1,7 +1,6 @@
-package io.atruecooky.craftory.register;
+package io.atruecooky.craftory;
 
 import com.tterrag.registrate.AbstractRegistrate;
-
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.CreativeModeTab;
 import net.neoforged.bus.api.IEventBus;

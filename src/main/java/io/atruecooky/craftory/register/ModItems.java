@@ -9,7 +9,7 @@ import io.atruecooky.craftory.Craftory;
 
 public class ModItems {
 	
-	public static final ItemEntry<WrenchItem> WRENCH = Craftory.registrate().item("wrench", (item) -> WrenchItem.createWithProperties())
+	public static final ItemEntry<WrenchItem> WRENCH = Craftory.registrate().item("wrench", WrenchItem::new)
 	.register();
 
 	public static final ItemEntry<Item> RAW_TIN = Craftory.registrate().item("raw_tin", Item::new)

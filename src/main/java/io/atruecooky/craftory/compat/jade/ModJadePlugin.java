@@ -1,7 +1,9 @@
 package io.atruecooky.craftory.compat.jade;
 
+import io.atruecooky.craftory.compat.jade.handler.WrenchToolHandler;
 import io.atruecooky.craftory.compat.jade.provider.*;
 import net.minecraft.world.level.block.Block;
+import snownee.jade.addon.harvest.HarvestToolProvider;
 import snownee.jade.api.IWailaClientRegistration;
 import snownee.jade.api.IWailaCommonRegistration;
 import snownee.jade.api.IWailaPlugin;
@@ -19,6 +21,7 @@ public class ModJadePlugin implements IWailaPlugin {
 	
 	@Override
 	public void registerClient(IWailaClientRegistration registration) {
+		HarvestToolProvider.registerHandler(new WrenchToolHandler());
 		registration.registerBlockComponent(new HeatStorageProvider(), Block.class);
 		registration.registerBlockComponent(new FumeStorageProvider(), Block.class);
 		registration.registerBlockComponent(new FluxStorageProvider(), Block.class);

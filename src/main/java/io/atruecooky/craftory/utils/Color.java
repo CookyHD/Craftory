@@ -1,5 +1,7 @@
 package io.atruecooky.craftory.utils;
 
+import org.joml.Vector3f;
+
 import net.minecraft.util.FastColor;
 
 public class Color {
@@ -128,6 +130,10 @@ public class Color {
 		return FastColor.ARGB32.color(a,r,g,b);
 	}
 
+	public Vector3f asVector() {
+		return new Vector3f((float)this.r/255.0f,(float)this.g/255.0f,(float)this.b/255.0f);
+	}
+	
 	public Color darken(float amount) {
 		return Color.fromPacked(
 			FastColor.ARGB32.lerp(
@@ -151,5 +157,6 @@ public class Color {
 	public Color alpha(int value) {
 		return new Color(this.r, this.g, this.b, value);
 	}
+
 
 }

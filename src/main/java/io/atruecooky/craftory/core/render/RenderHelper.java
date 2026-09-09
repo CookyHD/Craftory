@@ -13,12 +13,13 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.RandomSource;
 
 public class RenderHelper {
 
 	public static VertexConsumer vertex(
 		VertexConsumer consumer,
-		Matrix4f matrix,
+		Matrix4f matrix, 
 		int packedLight,
 		int packedOverlay,
 		Vector3f pos,
@@ -73,6 +74,10 @@ public class RenderHelper {
 
 	public static float getTime(float partialTick) {
 		return Float.valueOf(Minecraft.getInstance().levelRenderer.getTicks()) + partialTick;
+	}
+
+	public static float getRandom(long seed) {
+		return RandomSource.create(seed).nextFloat() * 20.0f;
 	}
 
 	public static class FaceBuilder {
@@ -137,7 +142,17 @@ public class RenderHelper {
 		;
 	}
 
+	public enum CullMode {
+		BACK,
+		FRONT,
+		NONE
+	}
+
 	public static class UV {
+
+		static final UV ONE_16 = new UV(0, 1, 0, 1, 16, 16);
+		static final UV ONE_32 = new UV(0, 1, 0, 1, 32, 32);
+		static final UV ONE_64 = new UV(0, 1, 0, 1, 64, 64);
 		
 		private final float u0;
 		private final float u1;

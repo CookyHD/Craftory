@@ -6,7 +6,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-import io.atruecooky.craftory.core.menu.IconCreativeModeTab;
+import io.atruecooky.craftory.core.menu.CreativeModeIconTab;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.CreativeModeInventoryScreen;
 import net.minecraft.world.item.CreativeModeTab;
@@ -16,16 +16,16 @@ public class CreativeModeInventoryScreenMixin {
 
 	@Inject(method = "renderTabButton", at = @At("HEAD"), cancellable = true)
 	public void craftory$renderTabButton(GuiGraphics guiGraphics, CreativeModeTab creativeModeTab, CallbackInfo ci) {
-		if (creativeModeTab instanceof IconCreativeModeTab tabWithIcon) {
+		if (creativeModeTab instanceof CreativeModeIconTab tab) {
 
 			int leftPos = ((ContainerScreenAccessor) this).craftory$getLeftPos();
 			int topPos = ((ContainerScreenAccessor) this).craftory$getTopPos();
 
-			int x = (leftPos + this.craftory$getTabX(tabWithIcon) + 5);
-			int y = (topPos + this.craftory$getTabY(tabWithIcon) + 13);
+			int x = (leftPos + craftory$getTabX(tab) + 5);
+			int y = (topPos + craftory$getTabY(tab) + 13);
 
-			((GuiGraphicsInvoker)guiGraphics).craftory$innerBlit(
-				tabWithIcon.getIcon(),
+			((GuiGraphicsInvoker) guiGraphics).craftory$innerBlit(
+				tab.getIcon(),
 				x,
 				x+16,
 				y,

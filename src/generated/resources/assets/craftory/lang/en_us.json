@@ -1,0 +1,13 @@
+{
+  "block.craftory.deepslate_tin_ore": "Deepslate Tin Ore",
+  "block.craftory.frame": "Construction Frame",
+  "block.craftory.heat_source": "Creative Heat Source",
+  "block.craftory.tin_ore": "Tin Ore",
+  "config.jade.plugin_craftory.flux_storage_provider": "Show Flux Storage",
+  "config.jade.plugin_craftory.fume_storage_provider": "Show Fume Storage",
+  "config.jade.plugin_craftory.heat_storage_provider": "Show Heat Storage",
+  "creative_tab.craftory.blocks": "Craftory: Block's",
+  "creative_tab.craftory.main": "Craftory",
+  "item.craftory.raw_tin": "Raw Tin",
+  "item.craftory.wrench": "Wrench"
+}

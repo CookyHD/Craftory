@@ -8,6 +8,7 @@ import io.atruecooky.craftory.Craftory;
 import io.atruecooky.craftory.content.block_entity.HeatSourceEntity;
 import io.atruecooky.craftory.core.render.RenderHelper;
 import io.atruecooky.craftory.core.render.RenderShapes;
+import io.atruecooky.craftory.core.render.RenderHelper.CullMode;
 import io.atruecooky.craftory.core.render.RenderHelper.Faces;
 import io.atruecooky.craftory.core.render.RenderHelper.UV;
 import io.atruecooky.craftory.utils.Color;
@@ -27,7 +28,7 @@ public class HeatSourceEntityRender implements BlockEntityRenderer<HeatSourceEnt
 	@Override
 	public void render(HeatSourceEntity blockEntity, float partialTick, PoseStack poseStack, MultiBufferSource bufferSource, int packedLight, int packedOverlay) {
 
-		float time = RenderHelper.getTime(partialTick);
+		float time = RenderHelper.getRandom(blockEntity.getBlockPos().asLong()) + RenderHelper.getTime(partialTick);
 
 		poseStack.pushPose();
 
@@ -39,12 +40,12 @@ public class HeatSourceEntityRender implements BlockEntityRenderer<HeatSourceEnt
 		RenderHelper.rotateY(poseStack, 4*time, 0.5, 0.5, 0.5);
 		RenderHelper.rotateX(poseStack, 4*time, 0.5, 0.5, 0.5);
 		
-		RenderShapes.cube(Faces.ALL, poseStack, bufferSource, RenderType.SOLID, LightTexture.FULL_BRIGHT, 0, 16, 16, 16, TEXTURE, Color.WHITE);
+		RenderShapes.cube(Faces.ALL, CullMode.BACK, poseStack, bufferSource, RenderType.SOLID, LightTexture.FULL_BRIGHT, 0, 16, 16, 16, TEXTURE, Color.WHITE);
 
 		poseStack.scale(1.2f, 1.2f, 1.2f);
 		poseStack.translate(-0.1, -0.1, -0.1);
 
-		RenderShapes.cube(Faces.ALL, poseStack, bufferSource, RenderType.TRANSLUCENT, LightTexture.FULL_BRIGHT, 0, 16, 16, 16, TEXTURE, Color.WHITE.alpha(125));
+		RenderShapes.cube(Faces.ALL, CullMode.BACK, poseStack, bufferSource, RenderType.TRANSLUCENT, LightTexture.FULL_BRIGHT, 0, 16, 16, 16, TEXTURE, Color.WHITE.alpha(125));
 
 		poseStack.popPose();
 	}

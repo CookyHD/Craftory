@@ -22,6 +22,10 @@
     },
     {
       "type": "minecraft:biome"
+    },
+    {
+      "type": "craftory:config_filter",
+      "config": "tin_ore"
     }
   ]
 }

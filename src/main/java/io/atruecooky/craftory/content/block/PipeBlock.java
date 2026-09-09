@@ -36,6 +36,8 @@ public class PipeBlock extends TransparentBlock {
 	public static final BooleanProperty UP = BooleanProperty.create("up");
 	public static final BooleanProperty DOWN = BooleanProperty.create("down");
 
+	public static final BooleanProperty LOCKED = BooleanProperty.create("locked");
+
 	public static final VoxelShape SHAPE = BlockUtils.createShape(4, 4, 4, 8, 8, 8);
 
 	public static final VoxelShape[] PART_SHAPES = {
@@ -64,12 +66,13 @@ public class PipeBlock extends TransparentBlock {
 			.setValue(WEST, false)
 			.setValue(UP, false)
 			.setValue(DOWN, false)
+			.setValue(LOCKED, false)
 		;
 	}
 
 	@Override
 	protected void createBlockStateDefinition(Builder<Block, BlockState> builder) {
-		builder.add(NORTH, EAST, SOUTH, WEST, UP, DOWN);
+		builder.add(NORTH, EAST, SOUTH, WEST, UP, DOWN, LOCKED);
 	}
 
 	@Override
@@ -86,11 +89,12 @@ public class PipeBlock extends TransparentBlock {
 
 	@Override
 	protected BlockState updateShape(BlockState state, Direction direction, BlockState neighborState, LevelAccessor level, BlockPos pos, BlockPos neighborPos) {
+		if (state.getValue(LOCKED)) return state;
 		BooleanProperty property = getProperty(direction);
 		if (state != null) {
 			state = state.setValue(property, this.canConnectTo(neighborState));
 		}
-		return super.updateShape(state, direction, neighborState, level, pos, neighborPos);
+		return state;
 	}
 
 	@Override
@@ -104,7 +108,7 @@ public class PipeBlock extends TransparentBlock {
 		.setValue(WEST, canConnectTo(level.getBlockState(pos.west())))
 		.setValue(UP, canConnectTo(level.getBlockState(pos.above())))
 		.setValue(DOWN, canConnectTo(level.getBlockState(pos.below())))
-		;
+		.setValue(LOCKED, false);
 	}
 
 	@Override

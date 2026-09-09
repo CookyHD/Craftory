@@ -1,5 +1,6 @@
 package io.atruecooky.craftory;
 
+import org.apache.maven.artifact.versioning.ArtifactVersion;
 import org.slf4j.Logger;
 import com.mojang.logging.LogUtils;
 
@@ -20,7 +21,10 @@ public class Craftory {
 
 	public Craftory(IEventBus eventBus, ModContainer modContainer) {
 
+		setVersion(modContainer);
+
 		REGISTRATE.setModEventBus(eventBus);
+		CraftoryConfig.register(modContainer);
 
 		ModItems.register();
 		ModBlocks.register();
@@ -30,7 +34,9 @@ public class Craftory {
 		ModCreativeTabs.register(eventBus);
 		ModMenuTypes.register();
 		ModDataComponents.register();
+		ModPlacementModifier.register(eventBus);
 
+		LOG.error(getVersion());
 	}
 
 	public static CraftoryRegistrate registrate() {
@@ -40,4 +46,17 @@ public class Craftory {
 	public static ResourceLocation namespace(String path) {
 		return ResourceLocation.fromNamespaceAndPath(MODID, path);
 	}
+
+	private static String ModVersion;
+
+	private static void setVersion(ModContainer modContainer) {
+		ArtifactVersion version = modContainer.getModInfo().getVersion();
+		ModVersion = version.getMajorVersion()+"."+version.getMinorVersion()+"."+version.getIncrementalVersion();
+	}
+
+	public static String getVersion() {
+		return ModVersion;
+	}
+
+
 }

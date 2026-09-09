@@ -1,13 +1,17 @@
 package io.atruecooky.craftory.content.block_entity;
 
 import io.atruecooky.craftory.register.ModBlocks;
+import net.createmod.catnip.annotations.ClientOnly;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.HolderLookup.Provider;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -29,25 +33,52 @@ public class QueryBlockEntity extends BlockEntity {
 	public int DRILL_X = 0;
 	public int DRILL_Z = 0;
 
-	public int LAZER_Y = 0;
+	public int LASER_Y = 0;
 
 	public ProgressState State;
 	public ItemStackHandler Inventory;
 	public int BuldingMaterial;
+
+	@ClientOnly 
+	public RandomSource random;
 
 	public QueryBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState state) {
 		super(type, pos, state);
 		this.Inventory = new ItemStackHandler(6);
 		this.BuldingMaterial = 0;
 		this.State = ProgressState.PLAN;
+		this.random = RandomSource.create(pos.asLong());
 	}
 
-	public static void tickServer(Level level, BlockPos pos, BlockState blockState, QueryBlockEntity blockEntity) {
+	public static void tickServer(ServerLevel level, BlockPos pos, BlockState blockState, QueryBlockEntity blockEntity) {
 		level.sendBlockUpdated(pos, blockState, blockState, 2);
 	}
 
 	public static void tickClient(Level level, BlockPos pos, BlockState blockState, QueryBlockEntity blockEntity) {
-
+		if (level.getGameTime() % 5 == 0) {
+			for (int i = 0; i < blockEntity.random.nextInt(2, 4); i++) {
+				level.addParticle(
+					ParticleTypes.WHITE_SMOKE,
+					pos.getX() + blockEntity.DRILL_X + 0.4 + (blockEntity.random.nextDouble() * 0.2),
+					pos.getY() + 4.5,
+					pos.getZ() + blockEntity.DRILL_Z + 0.4 + (blockEntity.random.nextDouble() * 0.2),
+					-0.02 + blockEntity.random.nextDouble() * 0.04,
+					0.02 + blockEntity.random.nextDouble() * 0.12,
+					-0.02 + blockEntity.random.nextDouble() * 0.04
+				);
+			}
+			for (int i = 0; i < blockEntity.random.nextInt(1, 2); i++) {
+				level.addParticle(
+					ParticleTypes.SMOKE,
+					pos.getX() + blockEntity.DRILL_X + 0.4 + (blockEntity.random.nextDouble() * 0.2),
+					pos.getY() + 4.5,
+					pos.getZ() + blockEntity.DRILL_Z + 0.4 + (blockEntity.random.nextDouble() * 0.2),
+					-0.01 + blockEntity.random.nextDouble() * 0.02,
+					0.02 + blockEntity.random.nextDouble() * 0.12,
+					-0.01 + blockEntity.random.nextDouble() * 0.02
+				);
+			}
+		}
 	}
 
 	public static boolean isFrame(Level level, BlockPos pos, Direction direction, int length) {
@@ -56,6 +87,8 @@ public class QueryBlockEntity extends BlockEntity {
 		}
 		return true;
 	}
+
+	
 
 	public static class Slots {
 
@@ -77,7 +110,13 @@ public class QueryBlockEntity extends BlockEntity {
 		}
 	}
 
+	public int getLength() {
+		return 0;
+	}
 
+	public int getWidth() {
+		return 0;
+	}
 
 	@Override
 	protected void saveAdditional(CompoundTag tag, Provider registries) {
@@ -102,7 +141,5 @@ public class QueryBlockEntity extends BlockEntity {
 		saveAdditional(tag, registries);
 		return tag;
 	}
-
-	
 
 }

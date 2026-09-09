@@ -14,7 +14,20 @@ group = mod_group_id
 
 sourceSets.main.resources {
 	srcDir('src/generated/resources')
-	exclude("src/generated/resources/.cache")
+	exclude('src/generated/resources/.cache')
+}
+
+tasks.named('processResources') {
+	duplicatesStrategy = DuplicatesStrategy.WARN
+}
+
+tasks.register('clearLogs') {
+	group = 'Utils'
+	delete fileTree('run/logs').include('**/*gz')
+	delete 'run/logs/telemetry'
+	doLast {
+		println('Logs Cleared...')
+	}
 }
 
 repositories {
@@ -63,11 +76,6 @@ base {
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(21)
 
-ext.clearLogs = {
-	delete fileTree('run/logs').include('**/*gz')
-	delete 'run/logs/telemetry'
-}
-
 neoForge {
 	version = project.neo_version
 
@@ -77,23 +85,15 @@ neoForge {
 	}
 
 	runs {
-		clientAuth {
-			clearLogs()
-			client()
-			if ("${world}" != '') programArguments.addAll('--quickPlaySingleplayer', "${world}")
-			devLogin = true
-			systemProperty 'neoforge.enabledGameTestNamespaces', project.mod_id
-		}
 
 		client {
-			clearLogs()
 			client()
+			if (auth) devLogin = true
 			if ("${world}" != '') programArguments.addAll('--quickPlaySingleplayer', "${world}")
 			systemProperty 'neoforge.enabledGameTestNamespaces', project.mod_id
 		}
 
 		server {
-			clearLogs()
 			server()
 			programArgument '--nogui'
 			systemProperty 'neoforge.enabledGameTestNamespaces', project.mod_id
@@ -105,7 +105,6 @@ neoForge {
 		}
 
 		data {
-			clearLogs()
 			data()
 			programArguments.addAll '--mod', project.mod_id, '--all', '--output', file('src/generated/resources/').getAbsolutePath(), '--existing', file('src/main/resources/').getAbsolutePath()
 		}

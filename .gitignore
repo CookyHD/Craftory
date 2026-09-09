@@ -2,8 +2,8 @@
 .gradle
 .vscode
 
-build
 bin
+build
 run
 
 src/generated/resources/.cache
