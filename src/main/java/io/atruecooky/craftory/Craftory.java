@@ -21,7 +21,7 @@ public class Craftory {
 
 	public Craftory(IEventBus eventBus, ModContainer modContainer) {
 
-		setVersion(modContainer);
+		Version.set(modContainer);
 
 		REGISTRATE.setModEventBus(eventBus);
 		CraftoryConfig.register(modContainer);
@@ -35,8 +35,6 @@ public class Craftory {
 		ModMenuTypes.register();
 		ModDataComponents.register();
 		ModPlacementModifier.register(eventBus);
-
-		LOG.error(getVersion());
 	}
 
 	public static CraftoryRegistrate registrate() {
@@ -47,16 +45,20 @@ public class Craftory {
 		return ResourceLocation.fromNamespaceAndPath(MODID, path);
 	}
 
-	private static String ModVersion;
-
-	private static void setVersion(ModContainer modContainer) {
-		ArtifactVersion version = modContainer.getModInfo().getVersion();
-		ModVersion = version.getMajorVersion()+"."+version.getMinorVersion()+"."+version.getIncrementalVersion();
+	public static class Version {
+	
+		private static String ModVersion;
+	
+		private static void set(ModContainer modContainer) {
+			ArtifactVersion version = modContainer.getModInfo().getVersion();
+			ModVersion = version.getMajorVersion()+"."+version.getMinorVersion()+"."+version.getIncrementalVersion();
+		}
+	
+		public static String get() {
+			return ModVersion;
+		}
 	}
 
-	public static String getVersion() {
-		return ModVersion;
-	}
 
 
 }

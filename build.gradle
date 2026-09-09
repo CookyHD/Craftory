@@ -73,8 +73,11 @@ repositories {
 base {
 	archivesName = mod_id
 }
-
+ 
 java.toolchain.languageVersion = JavaLanguageVersion.of(21)
+
+def devLoginProperty = providers.gradleProperty("dev_login").map{ it.toBoolean() }.orElse(false)
+def quickPlayProperty = providers.gradleProperty("quick_play").orElse("")
 
 neoForge {
 	version = project.neo_version
@@ -88,8 +91,8 @@ neoForge {
 
 		client {
 			client()
-			if (auth) devLogin = true
-			if ("${world}" != '') programArguments.addAll('--quickPlaySingleplayer', "${world}")
+			devLogin = devLoginProperty.get()
+			if (quickPlayProperty.get()) programArguments.addAll('--quickPlaySingleplayer', quickPlayProperty.get())
 			systemProperty 'neoforge.enabledGameTestNamespaces', project.mod_id
 		}
 
