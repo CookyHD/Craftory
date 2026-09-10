@@ -1,6 +1,7 @@
 {
 	"status": "INDEV",
-	"color" : "red",
+	"latest" : "0.0.1",
+	"minecraft": "1.21.1",
     "homepage": "https://github.com/CookyHD/Craftory/releases",
     "1.21.1": {
         "0.0.1": "DEV"
