@@ -2,6 +2,8 @@ modLoader="javafml"
 loaderVersion="1"
 license="MIT"
 
+updateJSONURL="https://raw.githubusercontent.com/CookyHD/Craftory/refs/heads/main/versions.json"
+
 [[mods]]
 
 modId="craftory"
