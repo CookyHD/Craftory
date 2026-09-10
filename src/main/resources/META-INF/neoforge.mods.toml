@@ -9,12 +9,12 @@ displayName="Craftory"
 
 version="0.0.1"
 
-logoFile = "thumbnail.png"
-authors="ATrueCooky"
-description="A mod that adds new ways of crafting via automated machinery."
+logoFile="thumbnail.png"
+authors="CookyHD"
+description="A Mod that adds new ways of Crafting via Automated Machinery."
 
-displayURL = "https://github.com/CookyHD/Craftory"
-updateJSONURL="https://raw.githubusercontent.com/CookyHD/Craftory/refs/heads/main/versions.json"
+updateJSONURL="https://github.com/CookyHD/Craftory/blob/main/versions.json?raw=true"
+displayURL="https://github.com/CookyHD/Craftory"
 
 [[mixins]]
 config="craftory.mixins.json"
