@@ -19,7 +19,8 @@ public class ModCreativeTabs {
 			output.accept(ModBlocks.HEAT_SOURCE);
 			output.accept(ModItems.WRENCH);
 			output.accept(ModItems.RAW_TIN);
-		})
+		}),
+		Craftory.namespace("textures/gui/sprites/icon/main.png")
 	));
 	
 	public static final DeferredHolder<CreativeModeTab, CreativeModeIconTab> BLOCKS = CREATIVE_MODE_TAB.register("blocks", (location) -> new CreativeModeIconTab(location,
@@ -29,7 +30,8 @@ public class ModCreativeTabs {
 			output.accept(ModBlocks.TIN_ORE.get());
 			output.accept(ModBlocks.DEEPSLATE_TIN_ORE.get());
 			output.accept(ModBlocks.FRAME);
-		})
+		}),
+		Craftory.namespace("textures/gui/sprites/icon/blocks.png")
 	));
 	
 	public static void register(IEventBus eventBus) {

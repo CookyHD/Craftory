@@ -8,6 +8,8 @@ modId="craftory"
 displayName="Craftory"
 version="0.0.1"
 
+logoFile = "thumbnail.png"
+
 authors="ATrueCooky"
 description='''
 ...

@@ -61,13 +61,13 @@ repositories {
 	maven { url = "https://api.modrinth.com/maven" }
 
 	//GECKOLIB
-	//maven {
-	//	name = 'GeckoLib'
-	//	url 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/'
-	//	content {
-	//		includeGroup("software.bernie.geckolib")
-	//	}
-	//}
+	maven {
+		name = 'GeckoLib'
+		url 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/'
+		content {
+			includeGroup("software.bernie.geckolib")
+		}
+	}
 }
 
 base {
@@ -129,6 +129,8 @@ configurations {
 	runtimeClasspath.extendsFrom localRuntime
 }
 
+def useGeckolibProperty = providers.gradleProperty("use_geckolib").map{ it.toBoolean() }.orElse(false)
+
 dependencies {
 
 	//REGISTRATE
@@ -152,7 +154,9 @@ dependencies {
 	implementation("maven.modrinth:jade:${jade_version}")
 
 	//GECKOLIB
-	//implementation "software.bernie.geckolib:geckolib-neoforge-${minecraft_version}:${geckolib_version}"
+	if (useGeckolibProperty.get()) {
+		implementation "software.bernie.geckolib:geckolib-neoforge-${minecraft_version}:${geckolib_version}"
+	}
 }
 
 tasks.withType(JavaCompile).configureEach {

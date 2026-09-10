@@ -1,6 +1,10 @@
 package io.atruecooky.craftory.content.block_entity;
 
+import org.joml.Vector3d;
+import org.joml.Vector3f;
+
 import io.atruecooky.craftory.register.ModBlocks;
+import io.atruecooky.craftory.utils.ParticleUtils;
 import net.createmod.catnip.annotations.ClientOnly;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -55,29 +59,50 @@ public class QueryBlockEntity extends BlockEntity {
 	}
 
 	public static void tickClient(Level level, BlockPos pos, BlockState blockState, QueryBlockEntity blockEntity) {
-		if (level.getGameTime() % 5 == 0) {
-			for (int i = 0; i < blockEntity.random.nextInt(2, 4); i++) {
-				level.addParticle(
-					ParticleTypes.WHITE_SMOKE,
-					pos.getX() + blockEntity.DRILL_X + 0.4 + (blockEntity.random.nextDouble() * 0.2),
-					pos.getY() + 4.5,
-					pos.getZ() + blockEntity.DRILL_Z + 0.4 + (blockEntity.random.nextDouble() * 0.2),
-					-0.02 + blockEntity.random.nextDouble() * 0.04,
-					0.02 + blockEntity.random.nextDouble() * 0.12,
-					-0.02 + blockEntity.random.nextDouble() * 0.04
-				);
-			}
-			for (int i = 0; i < blockEntity.random.nextInt(1, 2); i++) {
-				level.addParticle(
-					ParticleTypes.SMOKE,
-					pos.getX() + blockEntity.DRILL_X + 0.4 + (blockEntity.random.nextDouble() * 0.2),
-					pos.getY() + 4.5,
-					pos.getZ() + blockEntity.DRILL_Z + 0.4 + (blockEntity.random.nextDouble() * 0.2),
-					-0.01 + blockEntity.random.nextDouble() * 0.02,
-					0.02 + blockEntity.random.nextDouble() * 0.12,
-					-0.01 + blockEntity.random.nextDouble() * 0.02
-				);
-			}
+		double posX = pos.getX() + blockEntity.DRILL_X + 0.5;
+		double posY = pos.getY() + 4.5;
+		double posZ = pos.getZ() + blockEntity.DRILL_Z + 0.5;
+		if (level.getGameTime() % 2 == 0) {
+			ParticleUtils.spawnParticles(level, ParticleTypes.WHITE_SMOKE,
+				new Vector3d(posX, posY, posZ),
+				new Vector3d(0.4,0.0,0.4),
+				new Vector3f(0f,0.05f,0f),
+				new Vector3f(0f,0.1f,0f),
+				1,
+				2,
+				true
+			);
+			ParticleUtils.spawnParticles(level, ParticleTypes.SMOKE,
+				new Vector3d(posX, posY, posZ),
+				new Vector3d(0.4,0.0,0.4),
+				new Vector3f(0f,0.05f,0f),
+				new Vector3f(0f,0.1f,0f),
+				1,
+				2,
+				true
+			);
+			//for (int i = 0; i < blockEntity.random.nextInt(2, 4); i++) {
+			//	level.addParticle(
+			//		ParticleTypes.WHITE_SMOKE,
+			//		pos.getX() + blockEntity.DRILL_X + 0.4 + (blockEntity.random.nextDouble() * 0.2),
+			//		pos.getY() + 4.5,
+			//		pos.getZ() + blockEntity.DRILL_Z + 0.4 + (blockEntity.random.nextDouble() * 0.2),
+			//		-0.02 + blockEntity.random.nextDouble() * 0.04,
+			//		0.02 + blockEntity.random.nextDouble() * 0.12,
+			//		-0.02 + blockEntity.random.nextDouble() * 0.04
+			//	);
+			//}
+			//for (int i = 0; i < blockEntity.random.nextInt(1, 2); i++) {
+			//	level.addParticle(
+			//		ParticleTypes.SMOKE,
+			//		pos.getX() + blockEntity.DRILL_X + 0.4 + (blockEntity.random.nextDouble() * 0.2),
+			//		pos.getY() + 4.5,
+			//		pos.getZ() + blockEntity.DRILL_Z + 0.4 + (blockEntity.random.nextDouble() * 0.2),
+			//		-0.01 + blockEntity.random.nextDouble() * 0.02,
+			//		0.02 + blockEntity.random.nextDouble() * 0.12,
+			//		-0.01 + blockEntity.random.nextDouble() * 0.02
+			//	);
+			//}
 		}
 	}
 
