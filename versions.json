@@ -1,11 +1,10 @@
 {
-    "homepage": "<homepage/download page for your mod>",
+    "homepage": "https://github.com/CookyHD/Craftory/releases",
     "1.21.1": {
-		"0.0.2": "Development Update",
         "0.0.1": "Development"
     },
     "promos": {
-        "1.21.1-latest": "0.0.2",
-        "1.21.1-recommended": "0.0.2"
+        "1.21.1-latest": "0.0.1",
+        "1.21.1-recommended": "0.0.1"
     }
 }

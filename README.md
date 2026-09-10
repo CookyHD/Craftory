@@ -1,5 +1,5 @@
 # Craftory
 
-![icon](https://github.com/CookyHD/Craftory/blob/main/src/main/resources/thumbnail.png?raw=true)
+![icon](https://raw.githubusercontent.com/CookyHD/Craftory/refs/heads/main/src/main/resources/thumbnail.png)
 
 A Minecraft Mod for NeoForge 1.21.1
