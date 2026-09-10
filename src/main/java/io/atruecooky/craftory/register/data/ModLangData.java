@@ -18,6 +18,9 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 public class ModLangData {
 	
 	public static void load() {
+
+		AddFile(null);
+
 		AddLang(ModItems.WRENCH, "Wrench");
 		AddLang(ModItems.RAW_TIN, "Raw Tin");
 
@@ -62,5 +65,9 @@ public class ModLangData {
 
 	public static void AddConfigLang(String config, String string) {
 		DataLangProvider.addTranslation(Craftory.MODID+".configuration."+config, string);
+	}
+
+	public static void AddFile(String path) {
+		DataLangProvider.addFile(path);
 	}
 }
