@@ -1,4 +1,6 @@
 {
+	"status": "INDEV",
+	"status_color" : "red",
     "homepage": "https://github.com/CookyHD/Craftory/releases",
     "1.21.1": {
         "0.0.1": "DEV"
