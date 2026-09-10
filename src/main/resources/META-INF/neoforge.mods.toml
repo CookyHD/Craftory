@@ -7,13 +7,10 @@ license="MIT"
 modId="craftory"
 displayName="Craftory"
 version="0.0.1"
-
 logoFile = "thumbnail.png"
-
 authors="ATrueCooky"
-description='''
-...
-'''
+description="A mod that adds new ways of crafting via automated machinery."
+displayURL = "https://github.com/CookyHD/Craftory"
 
 [[mixins]]
 config="craftory.mixins.json"
@@ -21,7 +18,7 @@ config="craftory.mixins.json"
 [[dependencies.craftory]]
     modId="neoforge"
     type="required"
-    versionRange="[21.1.248,)"
+    versionRange="[21.1.250,)"
     ordering="NONE"
     side="BOTH"
 
