@@ -1,5 +1,3 @@
 {
-  "config.jade.plugin_craftory.heat_storage_provider": "Show Heat Storage",
-  "config.jade.plugin_craftory.fume_storage_provider": "Show Fume Storage",
-  "config.jade.plugin_craftory.flux_storage_provider": "Show Flux Storage"
+  
 }

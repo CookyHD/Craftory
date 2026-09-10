@@ -19,7 +19,7 @@ public class CraftoryConfig {
 
 		ModConfigSpec.Builder builder = new ModConfigSpec.Builder();
 
-		builder.push("Worldgen");
+		builder.push("worldgen");
 
 		WORLDGEN.put("tin_ore", builder
 			.comment("Should generate Tin Ore")

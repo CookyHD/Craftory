@@ -1,13 +1,13 @@
 package io.atruecooky.craftory.datagen;
 
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+//import java.nio.file.Files;
+//import java.nio.file.Path;
+//import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonObject;
+//import com.google.gson.Gson;
+//import com.google.gson.JsonObject;
 
 import io.atruecooky.craftory.Craftory;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -33,19 +33,19 @@ public class DataLangProvider extends LanguageProvider {
 	@Override
 	protected void addTranslations() {
 
-		Path file = Paths.get("").toAbsolutePath().getParent().resolve("src/main/resources/assets/"+MODID+"/lang/"+LOCALE+".json");
-		
-		if (Files.exists(file)) {
-			try  {
-				JsonObject json = new Gson().fromJson(Files.readString(file), JsonObject.class);
-				json.entrySet().forEach((entry) -> {
-					addTranslation(entry.getKey(), entry.getValue().getAsString());
-				});
-			}
-			catch (Exception exception) {
-				throw new RuntimeException("{}", exception);
-			}
-		}
+		//Path file = Paths.get("").toAbsolutePath().getParent().resolve("src/main/resources/assets/"+MODID+"/lang/"+LOCALE+".json");
+		//
+		//if (Files.exists(file)) {
+		//	try  {
+		//		JsonObject json = new Gson().fromJson(Files.readString(file), JsonObject.class);
+		//		json.entrySet().forEach((entry) -> {
+		//			addTranslation(entry.getKey(), entry.getValue().getAsString());
+		//		});
+		//	}
+		//	catch (Exception exception) {
+		//		throw new RuntimeException("{}", exception);
+		//	}
+		//}
 
 		for (Map.Entry<String,String> entry : ENTRIES.entrySet()) {
 			add(entry.getKey(),entry.getValue());

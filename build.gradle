@@ -1,8 +1,10 @@
+///////////////////////////
+// CONFIGURED FOR VSCODE //
+///////////////////////////
+
 plugins {
 	id 'java-library'
-	id 'maven-publish'
-	id 'net.neoforged.moddev' version '2.0.141'
-	id 'idea'
+	id 'net.neoforged.moddev' version '2.0.146'
 }
 
 tasks.named('wrapper', Wrapper).configure {
@@ -113,6 +115,7 @@ neoForge {
 		}
 
 		configureEach {
+			disableIdeRun()
 			systemProperty 'forge.logging.markers', 'REGISTRIES'
 			logLevel = org.slf4j.event.Level.DEBUG
 		}
@@ -161,11 +164,4 @@ dependencies {
 
 tasks.withType(JavaCompile).configureEach {
 	options.encoding = 'UTF-8'
-}
-
-idea {
-	module {
-		downloadSources = true
-		downloadJavadoc = true
-	}
 }

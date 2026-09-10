@@ -4,6 +4,7 @@ import com.tterrag.registrate.util.entry.BlockEntry;
 import com.tterrag.registrate.util.entry.EntityEntry;
 import com.tterrag.registrate.util.entry.ItemEntry;
 
+import io.atruecooky.craftory.Craftory;
 import io.atruecooky.craftory.datagen.DataLangProvider;
 import io.atruecooky.craftory.register.ModBlocks;
 import io.atruecooky.craftory.register.ModCreativeTabs;
@@ -28,6 +29,17 @@ public class ModLangData {
 
 		AddLang(ModCreativeTabs.MAIN, "Craftory");
 		AddLang(ModCreativeTabs.BLOCKS, "Craftory: Block's");
+
+		AddConfigLang("worldgen", "Worldgen");
+		AddConfigLang("worldgen.button", "->");
+
+		AddConfigLang("generate_tin_ore", "Generate Tin Ore");
+
+		AddLang("config.jade.plugin_craftory.heat_storage_provider", "Show Heat Storage");
+		AddLang("config.jade.plugin_craftory.fume_storage_provider", "Show Fume Storage");
+		AddLang("config.jade.plugin_craftory.flux_storage_provider", "Show Flux Storage");
+
+		//POPO
 	}
 
 	public static void AddLang(ItemEntry<? extends Item> item, String string) {
@@ -48,5 +60,9 @@ public class ModLangData {
 
 	public static void AddLang(String key, String string) {
 		DataLangProvider.addTranslation(key, string);
+	}
+
+	public static void AddConfigLang(String config, String string) {
+		DataLangProvider.addTranslation(Craftory.MODID+".configuration."+config, string);
 	}
 }
