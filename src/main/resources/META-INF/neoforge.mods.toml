@@ -2,15 +2,17 @@ modLoader="javafml"
 loaderVersion="1"
 license="MIT"
 
-
 [[mods]]
 
 modId="craftory"
 displayName="Craftory"
+
 version="0.0.1"
+
 logoFile = "thumbnail.png"
 authors="ATrueCooky"
 description="A mod that adds new ways of crafting via automated machinery."
+
 displayURL = "https://github.com/CookyHD/Craftory"
 updateJSONURL="https://raw.githubusercontent.com/CookyHD/Craftory/refs/heads/main/versions.json"
 
