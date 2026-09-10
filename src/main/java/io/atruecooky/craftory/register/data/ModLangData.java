@@ -38,8 +38,6 @@ public class ModLangData {
 		AddLang("config.jade.plugin_craftory.heat_storage_provider", "Show Heat Storage");
 		AddLang("config.jade.plugin_craftory.fume_storage_provider", "Show Fume Storage");
 		AddLang("config.jade.plugin_craftory.flux_storage_provider", "Show Flux Storage");
-
-		//POPO
 	}
 
 	public static void AddLang(ItemEntry<? extends Item> item, String string) {
