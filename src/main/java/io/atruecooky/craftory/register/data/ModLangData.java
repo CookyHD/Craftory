@@ -19,7 +19,7 @@ public class ModLangData {
 	
 	public static void load() {
 
-		AddFile("storage/en_us.json");
+		AddFile("lang/en_us.json");
 
 		AddLang(ModItems.WRENCH, "Wrench");
 		AddLang(ModItems.RAW_TIN, "Raw Tin");
