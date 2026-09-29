@@ -6,6 +6,7 @@ import io.atruecooky.craftory.Craftory;
 import io.atruecooky.craftory.content.block.HeatSourceBlock;
 import io.atruecooky.craftory.content.block.PipeBlock;
 import io.atruecooky.craftory.content.block.QueryBlock;
+import io.atruecooky.craftory.content.block.SmelterBlock;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
@@ -39,6 +40,13 @@ public class ModBlocks {
 		.strength(2f, 2f)
 		.mapColor(DyeColor.GRAY)
 		.sound(SoundType.METAL)
+	)
+	.simpleItem()
+	.register();
+
+	public static final BlockEntry<SmelterBlock> SMELTER = Craftory.registrate().block("smelter", SmelterBlock::new)
+	.properties((properties) -> properties
+	
 	)
 	.simpleItem()
 	.register();

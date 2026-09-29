@@ -8,6 +8,7 @@ import io.atruecooky.craftory.core.render.RenderHelper;
 import io.atruecooky.craftory.core.render.RenderShapes;
 import io.atruecooky.craftory.core.render.RenderHelper.CullMode;
 import io.atruecooky.craftory.core.render.RenderHelper.UV;
+import io.atruecooky.craftory.utils.Color;
 import net.minecraft.client.renderer.LightTexture;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
@@ -46,6 +47,9 @@ public class QueryBlockEntityRender implements BlockEntityRenderer<QueryBlockEnt
 	private static final UV FAN = TEXTURE.crop(48, 16, 16, 16);
 	private static final UV FAN_BACKGROUND = TEXTURE.crop(48, 0, 16, 16);
 
+	private static final UV LASER_OUTER = TEXTURE.crop(32, 40, 10, 8);
+	private static final UV LASER_INNER = TEXTURE.crop(42, 40, 6, 8);
+
 	@Override
 	public void render(QueryBlockEntity blockEntity, float partialTick, PoseStack poseStack, MultiBufferSource bufferSource, int packedLight, int packedOverlay) {
 
@@ -56,7 +60,7 @@ public class QueryBlockEntityRender implements BlockEntityRenderer<QueryBlockEnt
 
 		poseStack.pushPose();
 
-		poseStack.translate(0, 1, 0);
+		poseStack.translate(0, 5, 0);
 
 		RenderHelper.translatePixel(poseStack, 5f, 0f, 5f);
 		RenderShapes.cube(RenderHelper.Faces.HORIZONTAL, CullMode.BACK, poseStack, bufferSource, RenderType.SOLID, LightTexture.FULL_BRIGHT, packedOverlay, 6, 6, 6, GEM);
@@ -85,6 +89,19 @@ public class QueryBlockEntityRender implements BlockEntityRenderer<QueryBlockEnt
 
 		RenderHelper.translatePixel(poseStack, 0f, 0.5f, 0f);
 		RenderShapes.cube(RenderHelper.Faces.TOP, CullMode.BACK, poseStack, bufferSource, RenderType.CUTOUT, packedLight, packedOverlay, 16, 0, 16, FAN);
+
+		poseStack.popPose();
+
+		poseStack.pushPose();
+
+		poseStack.scale(0.5f, 1f, 0.5f);
+		poseStack.translate(0.5, 1,0.5);
+
+		RenderHelper.translatePixel(poseStack, 3, 0, 3);
+		RenderShapes.tube(CullMode.BACK, poseStack, bufferSource, RenderType.BEACON_BEAM.apply(InventoryMenu.BLOCK_ATLAS, true), LightTexture.FULL_BRIGHT, packedOverlay, 10, 8, 64+8, LASER_OUTER, Color.WHITE.alpha(25));
+		RenderHelper.translatePixel(poseStack, 2, 0, 2);
+		RenderHelper.rotateY(poseStack, 5*time, 3, 3, 3);
+		RenderShapes.tube(CullMode.BACK, poseStack, bufferSource, RenderType.BEACON_BEAM.apply(InventoryMenu.BLOCK_ATLAS, false), LightTexture.FULL_BRIGHT, packedOverlay, 6, 8, 64, LASER_INNER);
 
 		poseStack.popPose();
 	}

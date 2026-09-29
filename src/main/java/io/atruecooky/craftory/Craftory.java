@@ -1,6 +1,5 @@
 package io.atruecooky.craftory;
 
-import org.apache.maven.artifact.versioning.ArtifactVersion;
 import org.slf4j.Logger;
 import com.mojang.logging.LogUtils;
 
@@ -13,15 +12,13 @@ import net.neoforged.fml.common.Mod;
 @Mod(Craftory.MODID)
 public class Craftory {
 
-	
 	public static final String MODID = "craftory";
-	public static final Logger LOG = LogUtils.getLogger();
+	public static final String VERSION = "0.0.1";
 
+	public static final Logger LOG = LogUtils.getLogger();
 	public static final CraftoryRegistrate REGISTRATE = CraftoryRegistrate.create(MODID);
 
 	public Craftory(IEventBus eventBus, ModContainer modContainer) {
-
-		Version.set(modContainer);
 
 		REGISTRATE.setModEventBus(eventBus);
 		CraftoryConfig.register(modContainer);
@@ -44,21 +41,5 @@ public class Craftory {
 	public static ResourceLocation namespace(String path) {
 		return ResourceLocation.fromNamespaceAndPath(MODID, path);
 	}
-
-	public static class Version {
-	
-		private static String ModVersion;
-	
-		private static void set(ModContainer modContainer) {
-			ArtifactVersion version = modContainer.getModInfo().getVersion();
-			ModVersion = version.getMajorVersion()+"."+version.getMinorVersion()+"."+version.getIncrementalVersion();
-		}
-	
-		public static String get() {
-			return ModVersion;
-		}
-	}
-
-
 
 }

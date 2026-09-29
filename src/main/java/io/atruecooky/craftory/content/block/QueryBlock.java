@@ -51,7 +51,7 @@ public class QueryBlock extends Block implements EntityBlock {
 	}
 
 	@Override
-	public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level getterLevel, BlockState _blockState, BlockEntityType<T> _blockEntityType) {
+	public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level getterLevel, BlockState _blockState, BlockEntityType<T> blockEntityType) {
 		if (!getterLevel.isClientSide()) return (level, pos, blockState, blockEntity) -> QueryBlockEntity.tickServer((ServerLevel)level, pos, blockState, (QueryBlockEntity)blockEntity);
 		else return (level, pos, blockState, blockEntity) -> QueryBlockEntity.tickClient(level, pos, blockState, (QueryBlockEntity)blockEntity);
 	}

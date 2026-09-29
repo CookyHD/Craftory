@@ -32,7 +32,7 @@ public class CommonEvents {
 
 	@SubscribeEvent 
 	public static void onEvent(RegisterPayloadHandlersEvent event) {
-		PayloadRegistrar registrar = event.registrar(Craftory.Version.get());
+		PayloadRegistrar registrar = event.registrar(Craftory.VERSION);
 		WrenchPayload.getPayloadHandlers(registrar);
 	}
 

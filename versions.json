@@ -1,11 +1,7 @@
 {
-	"status": "INDEV",
-	"latest" : "0.0.1",
-	"latest-minecraft": "1.21.1",
-
 	"homepage": "https://github.com/CookyHD/Craftory/releases",
 	"1.21.1": {
-		"0.0.1": "INDEV"
+		"0.0.1": "Initial Indev Version."
 	},
 	"promos": {
 		"1.21.1-latest": "0.0.1",

@@ -60,7 +60,7 @@ public class QueryBlockEntity extends BlockEntity {
 
 	public static void tickClient(Level level, BlockPos pos, BlockState blockState, QueryBlockEntity blockEntity) {
 		double posX = pos.getX() + blockEntity.DRILL_X + 0.5;
-		double posY = pos.getY() + 4.5;
+		double posY = pos.getY() + 8.5;
 		double posZ = pos.getZ() + blockEntity.DRILL_Z + 0.5;
 		if (level.getGameTime() % 2 == 0) {
 			ParticleUtils.spawnParticles(level, ParticleTypes.WHITE_SMOKE,

@@ -60,6 +60,18 @@ public class RenderHelper {
 
 	}
 
+	public static void rotateY(PoseStack poseStack, float degrees, int offset_x, int offset_y, int offset_z) {
+		translatePixel(poseStack, offset_x, offset_y, offset_z);
+		poseStack.mulPose(Axis.YP.rotationDegrees(degrees));
+		translatePixel(poseStack, -offset_x, -offset_y, -offset_z);
+	}
+
+	public static void rotateX(PoseStack poseStack, float degrees, int offset_x, int offset_y, int offset_z) {
+		translatePixel(poseStack, offset_x, offset_y, offset_z);
+		poseStack.mulPose(Axis.XP.rotationDegrees(degrees));
+		translatePixel(poseStack, -offset_x, -offset_y, -offset_z);
+	}
+
 	public static void rotateY(PoseStack poseStack, float degrees, double offset_x, double offset_y, double offset_z) {
 		poseStack.translate(offset_x, offset_y, offset_z);
 		poseStack.mulPose(Axis.YP.rotationDegrees(degrees));

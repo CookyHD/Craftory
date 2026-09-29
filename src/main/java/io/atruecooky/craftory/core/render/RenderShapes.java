@@ -178,11 +178,12 @@ public class RenderShapes {
 		RenderType renderType,
 		int packedLight,
 		int packedOverlay,
-		int size,
+		int size_x,
+		int size_y,
 		int length,
 		UV uv
 	) {
-		return tube(cull, poseStack, bufferSource, renderType, packedLight, packedOverlay, size, length, uv, Color.WHITE);
+		return tube(cull, poseStack, bufferSource, renderType, packedLight, packedOverlay, size_x, size_y, length, uv, Color.WHITE);
 	}
 
 	public static float tube(
@@ -192,30 +193,33 @@ public class RenderShapes {
 		RenderType renderType,
 		int packedLight,
 		int packedOverlay,
-		int size,
+		int size_x,
+		int size_y,
 		int length,
 		UV uv,
 		Color color
 	) {
 
-		float width = (float)size / 16f;
+		float width = (float)size_y / 16f;
 
-		int stpes = (int)Math.floor((float)length / (float)size);
-		int reminder = (int)((float)length % (float)size);
+		int stpes = (int)Math.floor((float)length / (float)size_y);
+		int reminder = (int)((float)length % (float)size_y);
 
 		float y_offset = 0f;
 		
 		for (int i = 0; i < stpes; i++) {
 			y_offset += width;
 			poseStack.translate(0.0, width * i, 0.0);
-			cube(Faces.HORIZONTAL, cull, poseStack, bufferSource, renderType, packedLight, packedOverlay, size, size, size, uv, color);
+			cube(Faces.HORIZONTAL, cull, poseStack, bufferSource, renderType, packedLight, packedOverlay, size_x, size_y, size_x, uv, color);
 			poseStack.translate(0.0, -(width * i), 0.0);
 		}
 
 		UV last_uv = uv.crop(0, 0, uv.Width(), reminder);
 
+		if (reminder == 0) return y_offset;
+
 		poseStack.translate(0.0, y_offset, 0.0);
-		cube(Faces.HORIZONTAL, cull, poseStack, bufferSource, renderType, packedLight, packedOverlay, size, size-reminder, size, last_uv, color);
+		cube(Faces.HORIZONTAL, cull, poseStack, bufferSource, renderType, packedLight, packedOverlay, size_x, size_y-reminder, size_x, last_uv, color);
 		poseStack.translate(0.0, -y_offset, 0.0);
 
 		return y_offset + ((float)reminder / 16f);

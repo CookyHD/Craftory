@@ -5,6 +5,7 @@ import com.tterrag.registrate.util.entry.BlockEntityEntry;
 import io.atruecooky.craftory.Craftory;
 import io.atruecooky.craftory.content.block_entity.HeatSourceEntity;
 import io.atruecooky.craftory.content.block_entity.QueryBlockEntity;
+import io.atruecooky.craftory.content.block_entity.SmelterEntity;
 import io.atruecooky.craftory.content.entity_renderer.HeatSourceEntityRender;
 import io.atruecooky.craftory.content.entity_renderer.QueryBlockEntityRender;
 
@@ -18,6 +19,10 @@ public class ModBlockEntityTypes {
 	public static final BlockEntityEntry<QueryBlockEntity> QUERY = Craftory.registrate().blockEntity("query", QueryBlockEntity::new)
 	.validBlock(() -> ModBlocks.QUERY.get())
 	.renderer(() -> QueryBlockEntityRender::new)
+	.register();
+
+	public static final BlockEntityEntry<SmelterEntity> SMELTER = Craftory.registrate().blockEntity("smelter", SmelterEntity::new)
+	.validBlock(() -> ModBlocks.SMELTER.get())
 	.register();
 
 	public static void register() {}
