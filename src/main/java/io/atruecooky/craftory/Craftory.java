@@ -13,9 +13,8 @@ import net.neoforged.fml.common.Mod;
 public class Craftory {
 
 	public static final String MODID = "craftory";
-	public static final String VERSION = "0.0.1";
-
 	public static final Logger LOG = LogUtils.getLogger();
+
 	public static final CraftoryRegistrate REGISTRATE = CraftoryRegistrate.create(MODID);
 
 	public Craftory(IEventBus eventBus, ModContainer modContainer) {
@@ -32,6 +31,7 @@ public class Craftory {
 		ModMenuTypes.register();
 		ModDataComponents.register();
 		ModPlacementModifier.register(eventBus);
+		
 	}
 
 	public static CraftoryRegistrate registrate() {

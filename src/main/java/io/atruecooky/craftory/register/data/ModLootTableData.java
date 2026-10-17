@@ -11,7 +11,7 @@ import net.minecraft.world.level.storage.loot.LootTable;
 
 public class ModLootTableData {
 	
-	public static void load() {
+	public static void bootstrap() {
 
 		BlockLootTable(ModBlocks.FRAME.get(), provider -> provider.createSingleItemTable(Items.COPPER_INGOT));
 

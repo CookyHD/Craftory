@@ -28,10 +28,10 @@ public class DataEvents {
 	@SubscribeEvent
 	public static void onEvent(GatherDataEvent event) {
 
-		ModTagData.load();
-		ModLootTableData.load();
-		ModLangData.load();
-		ModModelData.load();
+		ModTagData.bootstrap();
+		ModLootTableData.bootstrap();
+		ModLangData.bootstrap();
+		ModModelData.bootstrap();
 
 		DataGenerator generator = event.getGenerator();
 		PackOutput output = generator.getPackOutput();
@@ -76,34 +76,7 @@ public class DataEvents {
 			new DataLangProvider(output)
 		);
 
-		//FUME-ATLAS
-		//generator.addProvider(
-		//	event.includeClient(),
-		//	new SpriteSourceProvider(output, lookupProvider, Craftory.MODID, existingFileHelper) {
-		//		@Override
-		//		protected void gather() {
-		//			this.atlas(Craftory.namespace("fumes")).addSource(new DirectoryLister("fume", ""));
-		//		}
-		//	}
-		//);
 	}
-
-	//ATLAS-RELOADER
-	//@SubscribeEvent
-	//public static void onEvent(RegisterClientReloadListenersEvent event) {
-	//	event.registerReloadListener(FumeAtlas.getIntance());
-	//}
-	//public static class FumeAtlas extends TextureAtlasHolder {
-	//	public static final ResourceLocation LOCATION = Craftory.namespace("textures/atlas/fumes.png");
-	//	public FumeAtlas(TextureManager textureManager) {
-	//		super(textureManager, LOCATION, Craftory.namespace("fumes"));
-	//	}
-	//	private static FumeAtlas intance;
-	//	public static FumeAtlas getIntance() {
-	//		if (intance == null) intance = new FumeAtlas(Minecraft.getInstance().getTextureManager());
-	//		return intance;
-	//	}
-	//}
 }
 
 

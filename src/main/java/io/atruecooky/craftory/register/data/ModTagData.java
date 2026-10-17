@@ -19,7 +19,7 @@ import net.neoforged.neoforge.common.Tags;
 
 public class ModTagData {
 	
-	public static void load() {
+	public static void bootstrap() {
 
 		//ITEMS
 

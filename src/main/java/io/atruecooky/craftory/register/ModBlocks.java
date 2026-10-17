@@ -22,6 +22,7 @@ public class ModBlocks {
 		.strength(2f, 2f)
 		.sound(SoundType.METAL)
 		.mapColor(DyeColor.PURPLE)
+		.ignitedByLava()
 	)
 	.simpleItem()
 	.register();

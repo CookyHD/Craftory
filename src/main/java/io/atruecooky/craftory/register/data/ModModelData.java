@@ -12,7 +12,7 @@ import net.minecraft.world.level.block.Block;
 
 public class ModModelData {
 	
-	public static void load() {
+	public static void bootstrap() {
 		ItemModel(ModItems.WRENCH, Type.HANDHELD);
 		ItemModel(ModItems.RAW_TIN, Type.BASIC);
 

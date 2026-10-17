@@ -17,7 +17,7 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 
 public class ModLangData {
 	
-	public static void load() {
+	public static void bootstrap() {
 
 		AddFile("lang/en_us.json");
 

@@ -16,16 +16,16 @@ public class CreativeModeInventoryScreenMixin {
 
 	@Inject(method = "renderTabButton", at = @At("HEAD"), cancellable = true)
 	public void craftory$renderTabButton(GuiGraphics guiGraphics, CreativeModeTab creativeModeTab, CallbackInfo ci) {
-		if (creativeModeTab instanceof CreativeModeIconTab tab) {
+		if (creativeModeTab instanceof CreativeModeIconTab creativeModeIconTab) {
 
 			int leftPos = ((ContainerScreenAccessor) this).craftory$getLeftPos();
 			int topPos = ((ContainerScreenAccessor) this).craftory$getTopPos();
 
-			int x = (leftPos + craftory$getTabX(tab) + 5);
-			int y = (topPos + craftory$getTabY(tab) + 13);
+			int x = (leftPos + craftory$getTabX(creativeModeIconTab) + 5);
+			int y = (topPos + craftory$getTabY(creativeModeIconTab) + 13);
 
 			((GuiGraphicsInvoker) guiGraphics).craftory$innerBlit(
-				tab.getIcon(),
+				creativeModeIconTab.getIcon(),
 				x,
 				x+16,
 				y,
